@@ -5,7 +5,7 @@ import Image from "next/image";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import styles from "../styles/Navbar.module.css";
-
+// sakib
 export default function Navbar() {
   const [btnClicked, setBtnClicked] = useState(false);
   const [user, setUser] = useState(null);
@@ -37,7 +37,7 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     await signOut(auth);
-    router.push('/login');
+    router.push("/login");
   };
 
   return (
@@ -72,11 +72,12 @@ export default function Navbar() {
               >
                 About
               </Link>
-              {
-                loading ? <p>loading..</p> : 
-                  <>
-                    {user && 
-                      <>
+              {loading ? (
+                <p>loading..</p>
+              ) : (
+                <>
+                  {user && (
+                    <>
                       <Link
                         className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
                           currentRouter === "/products" && "text-mainYellow"
@@ -86,17 +87,17 @@ export default function Navbar() {
                         Products
                       </Link>
                       <Link
-                      className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
-                        currentRouter === "/cart" && "text-mainYellow"
-                      }`}
-                      href="/cart"
-                    >
-                      Cart
-                    </Link>
+                        className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
+                          currentRouter === "/cart" && "text-mainYellow"
+                        }`}
+                        href="/cart"
+                      >
+                        Cart
+                      </Link>
                     </>
-                    }
-                  </>
-              }
+                  )}
+                </>
+              )}
               <Link
                 className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
                   currentRouter === "/contact" && "text-mainYellow"
@@ -113,26 +114,32 @@ export default function Navbar() {
               >
                 Developer
               </Link>
-              {
-                loading ? <p>loading..</p> : 
-                  <>
-                    {user ? (
-                  <>
-                        <span>Welcome, {user.email}</span>
-                        <button className="bg-red-500 px-5 py-1 rounded-md text-white" onClick={handleLogout}>Logout</button>
-                  </>
-                ) : (
-                  <Link
-                    className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
-                      currentRouter === "/login" && "text-mainYellow"
-                    }`}
-                    href="/login"
-                  >
-                    LogIn
-                  </Link>
-                )}
-                  </>
-              }
+              {loading ? (
+                <p>loading..</p>
+              ) : (
+                <>
+                  {user ? (
+                    <>
+                      <span>Welcome, {user.email}</span>
+                      <button
+                        className="bg-red-500 px-5 py-1 rounded-md text-white"
+                        onClick={handleLogout}
+                      >
+                        Logout
+                      </button>
+                    </>
+                  ) : (
+                    <Link
+                      className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
+                        currentRouter === "/login" && "text-mainYellow"
+                      }`}
+                      href="/login"
+                    >
+                      LogIn
+                    </Link>
+                  )}
+                </>
+              )}
             </div>
             <div
               id="menu_btn"
@@ -171,32 +178,35 @@ export default function Navbar() {
                 >
                   About
                 </Link>
-                {
-                  loading ? <p>loading..</p> : 
-                    <>
-                      {user && 
-                        <>
+                {loading ? (
+                  <p>loading..</p>
+                ) : (
+                  <>
+                    {user && (
+                      <>
                         <Link
                           className={`text-[#00000080] hover:text-mainYellow font-semibold text-base ${
                             currentRouter === "/products" && "text-mainYellow"
                           }`}
                           href="/products"
-                          onClick={() => setBtnClicked((btnClicked) => !btnClicked)}
+                          onClick={() =>
+                            setBtnClicked((btnClicked) => !btnClicked)
+                          }
                         >
                           Products
                         </Link>
                         <Link
-                        className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
-                          currentRouter === "/cart" && "text-mainYellow"
-                        }`}
-                        href="/cart"
-                      >
-                        Cart
-                      </Link>  
+                          className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
+                            currentRouter === "/cart" && "text-mainYellow"
+                          }`}
+                          href="/cart"
+                        >
+                          Cart
+                        </Link>
                       </>
-                      }
-                    </>
-                }
+                    )}
+                  </>
+                )}
                 <Link
                   className={`text-[#00000080] hover:text-mainYellow font-semibold text-base ${
                     currentRouter === "/contact" && "text-mainYellow"
@@ -215,26 +225,32 @@ export default function Navbar() {
                 >
                   Developer
                 </Link>
-                {
-                loading ? <p>loading..</p> : 
+                {loading ? (
+                  <p>loading..</p>
+                ) : (
                   <>
                     {user ? (
-                  <>
+                      <>
                         <span>Welcome, {user.email}</span>
-                        <button className="bg-red-500 px-5 py-1  rounded-md text-white" onClick={handleLogout}>Logout</button>
+                        <button
+                          className="bg-red-500 px-5 py-1  rounded-md text-white"
+                          onClick={handleLogout}
+                        >
+                          Logout
+                        </button>
+                      </>
+                    ) : (
+                      <Link
+                        className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
+                          currentRouter === "/login" && "text-mainYellow"
+                        }`}
+                        href="/login"
+                      >
+                        LogIn
+                      </Link>
+                    )}
                   </>
-                ) : (
-                  <Link
-                    className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
-                      currentRouter === "/login" && "text-mainYellow"
-                    }`}
-                    href="/login"
-                  >
-                    LogIn
-                  </Link>
                 )}
-                  </>
-              }
               </div>
             )}
           </div>
