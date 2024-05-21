@@ -8,6 +8,7 @@ import hill5 from "../../public/image/hill5.png";
 import tree from "../../public/image/tree.png";
 import plant from "../../public/image/plant.png";
 import leaf from "../../public/image/leaf.png";
+import RootLayout from "@/components/RootLayout";
 
 export default function Home() {
   useEffect(() => {
@@ -32,19 +33,6 @@ export default function Home() {
 
   return (
     <div className="p-container">
-      <header className="header">
-        <h2 className="logo">Odyssey</h2>
-        <nav className="navigation">
-          <a href="#" className="active">
-            Home
-          </a>
-          <a href="#">About</a>
-          <a href="#">Service</a>
-          <a href="#">Contact</a>
-          <a href="#">Login</a>
-        </nav>
-      </header>
-
       <section className="parallax">
         <Image src={hill1} id="hill1" alt="Hill 1" />
         <Image src={hill2} id="hill2" alt="Hill 2" />
@@ -163,5 +151,5 @@ export default function Home() {
 }
 
 Home.getLayout = function getLayout(page) {
-  return <>{page}</>;
+  return <RootLayout>{page}</RootLayout>;
 };

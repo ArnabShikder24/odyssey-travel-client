@@ -12,7 +12,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 30px 40px;
+    padding: 20px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,22 +26,6 @@
     pointer-events: none;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-}
-
-.navigation a {
-    text-decoration: none;
-    color: #ffffff;
-    padding: 6px 15px;
-    border-radius: 20px;
-    margin: 0 8px;
-    font-weight: 500;
-    font-family: 'Poppins', sans-serif;
-}
-
-.navigation a:hover, 
-.navigation a.active {
-    color: #ffffff;
-    background: #359381;
 }
 
 .parallax {
