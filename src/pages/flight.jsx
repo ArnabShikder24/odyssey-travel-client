@@ -507,6 +507,10 @@ const flight = () => {
                   </div>
                 </div>
               </div>
+              <p className="text-sm text-red-500">
+                *Plane fares may vary according to your travel date; they will
+                be adjusted accordingly.
+              </p>
             </div>
             <div className="w-full px-4 mb-10 lg:w-1/2 lg:mb-0">
               <Image
