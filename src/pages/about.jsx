@@ -19,9 +19,13 @@ const About = () => {
                   </h1>
                 </div>
                 <p className="px-4 mb-10 text-base leading-7 text-gray-500 dark:text-gray-400">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam Lorem ipsum dolor sit amet.
+                  Odyssey Travels was founded with a passion for exploration and
+                  a mission to make travel accessible and enjoyable for
+                  everyone. With over 10 years of experience in the industry, we
+                  pride ourselves on our expertise and customer-centric
+                  approach. Whether you are planning a solo adventure, a family
+                  vacation, or a romantic getaway, our team of travel experts is
+                  here to assist you every step of the way.
                 </p>
                 <div className="flex flex-wrap items-center">
                   <div className="w-full px-4 mb-6 sm:w-1/2 md:w-1/2 lg:mb-6">
@@ -43,7 +47,7 @@ const About = () => {
                         30k+
                       </p>
                       <h2 className="text-sm text-gray-700 dark:text-gray-400">
-                        Consumers
+                        Tourists Served
                       </h2>
                     </div>
                   </div>
@@ -70,7 +74,7 @@ const About = () => {
                         3,590
                       </p>
                       <h2 className="text-sm text-gray-700 dark:text-gray-400">
-                        Showroom
+                        Local Tour Guide
                       </h2>
                     </div>
                   </div>
@@ -78,21 +82,43 @@ const About = () => {
                     <div className="p-6 bg-white dark:bg-gray-900">
                       <span className="text-blue-500 dark:text-blue-400">
                         <svg
+                          width="44"
+                          height="44"
+                          viewBox="0 0 24 24"
+                          fill="none"
                           xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          className="w-10 h-10 bi bi-person-fill"
-                          fill="currentColor"
-                          viewBox="0 0 16 16"
+                          stroke="#212bc0"
                         >
-                          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                          <g
+                            id="SVGRepo_tracerCarrier"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></g>
+                          <g id="SVGRepo_iconCarrier">
+                            {" "}
+                            <path
+                              d="M12 21C15.5 17.4 19 14.1764 19 10.2C19 6.22355 15.866 3 12 3C8.13401 3 5 6.22355 5 10.2C5 14.1764 8.5 17.4 12 21Z"
+                              stroke="#3B82F6"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            ></path>{" "}
+                            <path
+                              d="M12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z"
+                              stroke="#3B82F6"
+                              stroke-width="3"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            ></path>{" "}
+                          </g>
                         </svg>
                       </span>
                       <p className="mt-4 mb-2 text-3xl font-bold text-gray-700 dark:text-gray-400">
-                        74
+                        20+
                       </p>
                       <h2 className="text-sm text-gray-700 dark:text-gray-400">
-                        Volunteer
+                        Countrys
                       </h2>
                     </div>
                   </div>
@@ -111,10 +137,10 @@ const About = () => {
                         </svg>
                       </span>
                       <p className="mt-4 mb-2 text-3xl font-bold text-gray-700 dark:text-gray-400">
-                        100
+                        365
                       </p>
                       <h2 className="text-sm text-gray-700 dark:text-gray-400">
-                        Timing
+                        Days Booking
                       </h2>
                     </div>
                   </div>
@@ -125,7 +151,7 @@ const About = () => {
               <Image
                 width={500}
                 height={250}
-                src="https://images.unsplash.com/photo-1518126085714-4f983a88f6c5?q=80&w=2018&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="https://images.unsplash.com/photo-1570143675316-51a19f90a943?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt=""
                 className="object-cover w-full h-full rounded"
                 s

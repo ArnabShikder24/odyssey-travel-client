@@ -11,9 +11,11 @@ const Contact = () => {
               Contact us
             </h2>
             <p className="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-500">
-              Apple, a tech giant founded in 1976, is renowned for its iconic
-              products like the iPhone, MacBook, and iPad. Known for sleek
-              design and cutting-edge technology.
+              We believe that travel is not just about visiting new places, but
+              about creating memories that last a lifetime. With our extensive
+              knowledge, insider access, and unwavering customer support, we
+              ensure every trip is as unique as the traveler embarking on it.
+              Join us and discover a world of possibilities.
             </p>
           </div>
 
@@ -61,10 +63,10 @@ const Contact = () => {
                     />
                   </svg>
                   <p className="mt-6 text-lg font-medium text-gray-900">
-                    istore@gmail.com
+                    odysseytravels@gmail.com
                   </p>
                   <p className="mt-1 text-lg font-medium text-gray-900">
-                    istore.inc@apple.com
+                    odyssey.inc@apple.com
                   </p>
                 </div>
               </div>
@@ -108,7 +110,10 @@ const Contact = () => {
                 <form action="#" method="POST" className="mt-14">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-4">
                     <div>
-                      <label htmlFor="" className="text-base font-medium text-gray-900">
+                      <label
+                        htmlFor=""
+                        className="text-base font-medium text-gray-900"
+                      >
                         {" "}
                         Your name{" "}
                       </label>
@@ -124,7 +129,10 @@ const Contact = () => {
                     </div>
 
                     <div>
-                      <label htmlFor="" className="text-base font-medium text-gray-900">
+                      <label
+                        htmlFor=""
+                        className="text-base font-medium text-gray-900"
+                      >
                         {" "}
                         Email address{" "}
                       </label>
@@ -140,7 +148,10 @@ const Contact = () => {
                     </div>
 
                     <div>
-                      <label htmlFor="" className="text-base font-medium text-gray-900">
+                      <label
+                        htmlFor=""
+                        className="text-base font-medium text-gray-900"
+                      >
                         {" "}
                         Phone number{" "}
                       </label>
@@ -156,7 +167,10 @@ const Contact = () => {
                     </div>
 
                     <div>
-                      <label htmlFor="" className="text-base font-medium text-gray-900">
+                      <label
+                        htmlFor=""
+                        className="text-base font-medium text-gray-900"
+                      >
                         {" "}
                         Company name{" "}
                       </label>
@@ -172,7 +186,10 @@ const Contact = () => {
                     </div>
 
                     <div className="sm:col-span-2">
-                      <label htmlFor="" className="text-base font-medium text-gray-900">
+                      <label
+                        htmlFor=""
+                        className="text-base font-medium text-gray-900"
+                      >
                         {" "}
                         Message{" "}
                       </label>
