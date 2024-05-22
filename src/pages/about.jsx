@@ -29,8 +29,8 @@ const About = () => {
                   here to assist you every step of the way.
                 </p>
                 <div className="flex flex-wrap items-center">
-                  <div className="w-full px-4 mb-6 sm:w-1/2 md:w-1/2 lg:mb-6">
-                    <div className="p-6 bg-white dark:bg-gray-900">
+                  <div className=" w-full px-4 mb-6 sm:w-1/2 md:w-1/2 lg:mb-6">
+                    <div className="p-6 bg-white dark:bg-gray-900 animate__flipOutY animate__delay-4s">
                       <span className="text-green-500 dark:text-blue-400">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,7 @@ const About = () => {
                     </div>
                   </div>
                   <div className="w-full px-4 mb-6 sm:w-1/2 md:w-1/2 lg:mb-6">
-                    <div className="p-6 bg-white dark:bg-gray-900">
+                    <div className="p-6 bg-white dark:bg-gray-900 animate__flipOutY animate__delay-4s">
                       <span className="text-green-500 dark:text-blue-400">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +80,7 @@ const About = () => {
                     </div>
                   </div>
                   <div className="w-full px-4 mb-6 sm:w-1/2 md:w-1/2 lg:mb-6">
-                    <div className="p-6 bg-white dark:bg-gray-900">
+                    <div className="p-6 bg-white dark:bg-gray-900 animate__flipOutY animate__delay-4s">
                       <span className="text-green-500 dark:text-blue-400">
                         <svg
                           width="44"
@@ -124,7 +124,7 @@ const About = () => {
                     </div>
                   </div>
                   <div className="w-full px-4 mb-6 sm:w-1/2 md:w-1/2 lg:mb-6">
-                    <div className="p-6 bg-white dark:bg-gray-900">
+                    <div className="p-6 bg-white dark:bg-gray-900 animate__flipOutY animate__delay-4s">
                       <span className="text-green-500 dark:text-blue-400">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
