@@ -14,10 +14,9 @@ const nextConfig = {
       "i.postimg.cc",
       "i.ibb.co",
       "plus.unsplash.com",
+      "img.icons8.com",
     ],
   },
 };
 
 module.exports = nextConfig;
-
-
