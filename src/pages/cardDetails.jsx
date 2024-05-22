@@ -3,7 +3,7 @@ import React from "react";
 
 const cardDetails = () => {
   return (
-    <div>
+    <div className="bg-green-100">
       <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4">
           <div className="lg:col-gap-12 xl:col-gap-16 mt-8 grid grid-cols-1 gap-12 lg:mt-12 lg:grid-cols-5 lg:gap-16">
