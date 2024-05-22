@@ -1,13 +1,14 @@
 import RootLayout from "@/components/RootLayout";
 import React from "react";
+import "animate.css";
 
 const Contact = () => {
   return (
     <div>
-      <section className="py-10 bg-gray-100 sm:py-16 lg:py-24">
+      <section className="py-10 bg-green-100 sm:py-16 lg:py-24">
         <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-5xl">
+            <h2 className="animate__bounceIn animate__delay-5s text-3xl font-bold leading-tight text-green-500 sm:text-4xl lg:text-5xl">
               Contact us
             </h2>
             <p className="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-500">
@@ -219,7 +220,6 @@ const Contact = () => {
           </div>
         </div>
       </section>
-      s
     </div>
   );
 };
