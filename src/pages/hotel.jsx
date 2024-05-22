@@ -102,10 +102,10 @@ const hotel = () => {
                           </div>
                           <br />
                           <br />
-                          <p className="text-red-500">
+                          <p className="text-sm text-red-500">
                             **All kinds of rooms will be air-conditioned.
                           </p>
-                          <p className="text-red-500">
+                          <p className="text-sm text-red-500">
                             **Hotel and room prices may vary; they will be
                             adjusted accordingly.
                           </p>
