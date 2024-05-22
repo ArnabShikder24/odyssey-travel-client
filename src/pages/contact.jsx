@@ -8,7 +8,7 @@ const Contact = () => {
       <section className="py-10 bg-green-100 sm:py-16 lg:py-24">
         <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="animate__bounceIn animate__delay-5s text-3xl font-bold leading-tight text-green-500 sm:text-4xl lg:text-5xl">
+            <h2 className="animate__bounceIn animate__delay-4s text-3xl font-bold leading-tight text-green-500 sm:text-4xl lg:text-5xl">
               Contact us
             </h2>
             <p className="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-500">
@@ -22,7 +22,7 @@ const Contact = () => {
 
           <div className="max-w-5xl mx-auto mt-12 sm:mt-16">
             <div className="grid grid-cols-1 gap-6 px-8 text-center md:px-0 md:grid-cols-3">
-              <div className="overflow-hidden bg-white rounded-xl">
+              <div className="overflow-hidden bg-white rounded-xl animate__heartBeat animate__delay-4s">
                 <div className="p-6">
                   <svg
                     className="flex-shrink-0 w-10 h-10 mx-auto text-gray-400"
@@ -47,7 +47,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="overflow-hidden bg-white rounded-xl">
+              <div className="overflow-hidden bg-white rounded-xl animate__heartBeat animate__delay-4s">
                 <div className="p-6">
                   <svg
                     className="flex-shrink-0 w-10 h-10 mx-auto text-gray-400"
@@ -72,7 +72,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="overflow-hidden bg-white rounded-xl">
+              <div className="overflow-hidden bg-white rounded-xl animate__heartBeat animate__delay-2s">
                 <div className="p-6">
                   <svg
                     className="flex-shrink-0 w-10 h-10 mx-auto text-gray-400"
