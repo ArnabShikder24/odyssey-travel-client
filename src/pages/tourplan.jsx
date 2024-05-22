@@ -3,8 +3,8 @@ import React from "react";
 
 const tourplan = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-slate-200">
-      <div className="max-w-md rounded-xl bg-white shadow-lg">
+    <div className="flex items-center justify-center min-h-screen bg-green-100">
+      <div className="w-full sm:w-full md:w-1/2 lg:w-1/3 bg-white p-4 shadow-lg">
         <div className="p-8">
           <Image
             height={200}
