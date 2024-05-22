@@ -15,6 +15,7 @@ const nextConfig = {
       "i.ibb.co",
       "plus.unsplash.com",
       "img.icons8.com",
+      "readymadeui.com",
     ],
   },
 };
