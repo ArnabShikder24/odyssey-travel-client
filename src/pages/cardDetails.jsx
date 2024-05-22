@@ -112,7 +112,7 @@ const cardDetails = () => {
                     className="peer sr-only"
                   />
                   <p className="peer-checked:bg-green-500 peer-checked:text-white rounded-lg border border-green-500 px-6 py-2 font-bold">
-                    Family
+                    Couple
                   </p>
                 </label>
                 <label className="">
@@ -123,7 +123,7 @@ const cardDetails = () => {
                     className="peer sr-only"
                   />
                   <p className="peer-checked:bg-green-500 peer-checked:text-white rounded-lg border border-green-500 px-6 py-2 font-bold">
-                    Couple
+                    Family
                   </p>
                 </label>
               </div>
