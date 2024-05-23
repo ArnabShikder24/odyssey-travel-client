@@ -1,20 +1,21 @@
 import React from "react";
 import Image from "next/image";
 import RootLayout from "@/components/RootLayout";
+import "animate.css";
 
 const About = () => {
   return (
     <div>
-      <section className="py-10 lg:py-20 bg-stone-100 font-poppins dark:bg-gray-800">
+      <section className="py-10 lg:py-20 bg-green-100 font-poppins dark:bg-gray-800">
         <div className="max-w-6xl py-4 mx-auto lg:py-6 md:px-6">
           <div className="flex flex-wrap ">
             <div className="w-full px-4 mb-10 lg:w-1/2 lg:mb-0 ">
               <div className="lg:max-w-md">
-                <div className="px-4 pl-4 mb-6 border-l-4 border-blue-500">
+                <div className="px-4 pl-4 mb-6 border-l-4 border-green-500">
                   <span className="text-sm text-gray-600 uppercase dark:text-gray-400">
                     Who we are?
                   </span>
-                  <h1 className="mt-2 text-3xl font-black text-gray-700 md:text-5xl dark:text-gray-300">
+                  <h1 className="mt-2 text-3xl font-black text-green-500 md:text-5xl dark:text-gray-300 animate__bounceIn animate__delay-5s">
                     About Us
                   </h1>
                 </div>
@@ -28,9 +29,9 @@ const About = () => {
                   here to assist you every step of the way.
                 </p>
                 <div className="flex flex-wrap items-center">
-                  <div className="w-full px-4 mb-6 sm:w-1/2 md:w-1/2 lg:mb-6">
-                    <div className="p-6 bg-white dark:bg-gray-900">
-                      <span className="text-blue-500 dark:text-blue-400">
+                  <div className=" w-full px-4 mb-6 sm:w-1/2 md:w-1/2 lg:mb-6">
+                    <div className="p-6 bg-white dark:bg-gray-900 animate__flipOutY animate__delay-4s">
+                      <span className="text-green-500 dark:text-blue-400">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
@@ -52,8 +53,8 @@ const About = () => {
                     </div>
                   </div>
                   <div className="w-full px-4 mb-6 sm:w-1/2 md:w-1/2 lg:mb-6">
-                    <div className="p-6 bg-white dark:bg-gray-900">
-                      <span className="text-blue-500 dark:text-blue-400">
+                    <div className="p-6 bg-white dark:bg-gray-900 animate__flipOutY animate__delay-4s">
+                      <span className="text-green-500 dark:text-blue-400">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
@@ -79,8 +80,8 @@ const About = () => {
                     </div>
                   </div>
                   <div className="w-full px-4 mb-6 sm:w-1/2 md:w-1/2 lg:mb-6">
-                    <div className="p-6 bg-white dark:bg-gray-900">
-                      <span className="text-blue-500 dark:text-blue-400">
+                    <div className="p-6 bg-white dark:bg-gray-900 animate__flipOutY animate__delay-4s">
+                      <span className="text-green-500 dark:text-blue-400">
                         <svg
                           width="44"
                           height="44"
@@ -99,14 +100,14 @@ const About = () => {
                             {" "}
                             <path
                               d="M12 21C15.5 17.4 19 14.1764 19 10.2C19 6.22355 15.866 3 12 3C8.13401 3 5 6.22355 5 10.2C5 14.1764 8.5 17.4 12 21Z"
-                              stroke="#3B82F6"
+                              stroke="#16A34A"
                               stroke-width="2"
                               stroke-linecap="round"
                               stroke-linejoin="round"
                             ></path>{" "}
                             <path
                               d="M12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z"
-                              stroke="#3B82F6"
+                              stroke="#16A34A"
                               stroke-width="3"
                               stroke-linecap="round"
                               stroke-linejoin="round"
@@ -123,8 +124,8 @@ const About = () => {
                     </div>
                   </div>
                   <div className="w-full px-4 mb-6 sm:w-1/2 md:w-1/2 lg:mb-6">
-                    <div className="p-6 bg-white dark:bg-gray-900">
-                      <span className="text-blue-500 dark:text-blue-400">
+                    <div className="p-6 bg-white dark:bg-gray-900 animate__flipOutY animate__delay-4s">
+                      <span className="text-green-500 dark:text-blue-400">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
