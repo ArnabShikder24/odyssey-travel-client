@@ -8,6 +8,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  user-select: none;
 }
 
 @layer components {
@@ -23,5 +24,22 @@ div {
 html {
   background-color: #fbfcfd;
   scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 6px; /* Set the width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0da44a; /* Color of the scrollbar handle */
+  border-radius: 20px; /* Rounded corners of the scrollbar handle */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0a7134; /* Color of the scrollbar handle on hover */
 }
 

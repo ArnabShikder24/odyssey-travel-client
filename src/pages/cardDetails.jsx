@@ -1,4 +1,7 @@
+import RootLayout from "@/components/RootLayout";
+import { pathname } from "@/routes/routes.index";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const cardDetails = () => {
@@ -172,8 +175,8 @@ const cardDetails = () => {
                   <span className="text-base">/person</span>
                 </div>
 
-                <button
-                  type="button"
+                <Link
+                  href={pathname.hotel}
                   className="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-green-500 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
                 >
                   <svg
@@ -191,7 +194,7 @@ const cardDetails = () => {
                     />
                   </svg>
                   Choose Package
-                </button>
+                </Link>
               </div>
 
               <ul className="mt-8 space-y-2">
@@ -242,3 +245,8 @@ const cardDetails = () => {
 };
 
 export default cardDetails;
+
+cardDetails.getLayout = function getLayout(page) {
+  return <RootLayout>{page}</RootLayout>;
+};
+

@@ -1,10 +1,12 @@
+import { pathname } from "@/routes/routes.index";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const payment = () => {
   return (
     <di>
-      <div className="bg-green-100 p-4">
+      <div className="bg-green-100 p-4 h-screen">
         <div className="bg-white p-12 rounded-lg max-w-4xl mx-auto">
           <div className="text-center">
             <h2 className="text-3xl font-extrabold text-blue-500 inline-block border-b-4 border-blue-500 pb-1">
@@ -167,12 +169,12 @@ const payment = () => {
               >
                 Pay later
               </button>
-              <button
-                type="button"
+              <Link
+                href={pathname.confirmed}
                 className="px-6 py-3.5 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700"
               >
                 Pay now
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -182,3 +184,4 @@ const payment = () => {
 };
 
 export default payment;
+
