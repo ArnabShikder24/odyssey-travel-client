@@ -8,6 +8,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 const SignUp = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const [error, setError] = useState(null);
@@ -19,13 +20,10 @@ const SignUp = () => {
       const user = userCredential.user;
       console.log('New User Created:', user);
       const userData = {
-        first_name: 'John',
-        last_name: 'Doe', 
-        phone: '1234567890',
-        address: '123 Main St',
+        username: name,
         email: email
       };
-      const response = await axios.post('http://localhost:5000/api/v1/user', userData);
+      const response = await axios.post('http://localhost:5000/api/v1/user/create', userData);
       console.log('New User Created:', user, response);
       toast.success("Successfully Create User");
       router.push('/');
@@ -46,13 +44,10 @@ const SignUp = () => {
       console.log('Google User Signed In:', user);
       if (user?.email) {
         const userData = {
-          first_name: 'John',
-          last_name: 'Doe', 
-          phone: '1234567890',
-          address: '123 Main St',
+          username: user?.displayName,
           email: user?.email
         };
-        const response = await axios.post('http://localhost:5000/api/v1/user', userData);
+        const response = await axios.post('http://localhost:5000/api/v1/user/create', userData);
         console.log('New User Created:', user, response);
         toast.success("New User Created");
       }
@@ -190,6 +185,40 @@ const SignUp = () => {
 
             <form className="mt-8">
               <div className="space-y-5">
+                <div>
+                  <label htmlFor="" className="text-base font-medium text-gray-900">
+                    {" "}
+                    Full Name{" "}
+                  </label>
+                  <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
+                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                      <svg
+                        className="w-5 h-5"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+                        />
+                      </svg>
+                    </div>
+
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      value={name}
+                      onChange={e => setName(e.target.value)}
+                      placeholder="Full Name"
+                      className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
+                    />
+                  </div>
+                </div>
                 <div>
                   <label htmlFor="" className="text-base font-medium text-gray-900">
                     {" "}

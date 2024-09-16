@@ -16,12 +16,10 @@ const Login = () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, pass);
       const user = userCredential.user;
-      console.log('New User Created:', user);
       toast.success("Successfully logged In");
       router.push('/');
     } catch (error) {
       setError(error.message);
-      console.error('Error creating user:', error.message);
       toast.error("something wents wrong, try again");
     }
     setEmail('');
