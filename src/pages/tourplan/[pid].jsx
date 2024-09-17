@@ -1,10 +1,55 @@
 import RootLayout from "@/components/RootLayout";
+import { auth } from "@/lib/firebase";
 import { pathname } from "@/routes/routes.index";
+import axios from "axios";
+import { onAuthStateChanged } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 
 const CardDetails = () => {
+  const router = useRouter();
+  const { pid } = router.query;
+  const [product, setProduct] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+      const fetchProduct = async () => {
+      try {
+          const response = await axios.get(
+          `http://localhost:5000/api/v1/packbyid?package_id=${pid}`
+          );
+          setProduct(response.data.data);
+          setLoading(false);
+      } catch (error) {
+          setError(error.message);
+          console.error("Error fetching product:", error.message);
+          setLoading(false);
+      }
+      };
+      if (pid) {
+          fetchProduct();
+      }
+  }, [pid]);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setUser(user);
+            setLoading(false);
+        });
+    
+        return () => unsubscribe();
+    }, []);
+
+    if (loading) {
+        return <p>loading...</p>
+    }
+    if (!product) {
+        return <p>Product not found.</p>;
+    }
   return (
     <div className="bg-green-100">
       <section className="py-12 sm:py-16">
@@ -18,7 +63,7 @@ const CardDetails = () => {
                       height={100}
                       width={900}
                       className="h-full w-full max-w-full object-cover"
-                      src="https://images.unsplash.com/photo-1553603227-2358aabe821e?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      src={product.img_url}
                       alt=""
                     />
                   </div>
@@ -27,7 +72,7 @@ const CardDetails = () => {
             </div>
             <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
               <h1 className="sm: text-2xl font-bold text-green-500 sm:text-3xl">
-                Vermilion Cliffs Arizona
+                {product.name}
               </h1>
 
               <div className="mt-5 flex items-center">
@@ -137,23 +182,23 @@ const CardDetails = () => {
                   <input
                     type="radio"
                     name="subscription"
-                    value="3 days"
+                    value="30 days"
                     className="peer sr-only"
                   />
                   <p className="peer-checked:bg-green-500 peer-checked:text-white rounded-lg border border-green-500 px-6 py-2 font-bold">
-                    3 Days
+                    30 Days
                   </p>
                 </label>
                 <label className="">
                   <input
                     type="radio"
                     name="subscription"
-                    value="5 Days"
+                    value="15 Days"
                     className="peer sr-only"
                     checked
                   />
                   <p className="peer-checked:bg-green-500 peer-checked:text-white rounded-lg border border-green-500 px-6 py-2 font-bold">
-                    5 Days
+                    15 Days
                   </p>
                 </label>
                 <label className="">
@@ -171,7 +216,7 @@ const CardDetails = () => {
 
               <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
                 <div className="flex items-end">
-                  <h1 className="text-3xl font-bold">$60.50</h1>
+                  <h1 className="text-3xl font-bold">${product.price}</h1>
                   <span className="text-base">/person</span>
                 </div>
 
@@ -214,7 +259,7 @@ const CardDetails = () => {
                       className=""
                     ></path>
                   </svg>
-                  365 Days Booking
+                  15 Days Booking
                 </li>
 
                 <li className="flex items-center text-left text-sm font-medium text-gray-600">

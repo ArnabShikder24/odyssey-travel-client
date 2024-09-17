@@ -55,7 +55,7 @@ export default function AllPackages() {
             <div className="pt-4 rounded shadow bg-stone-100 dark:bg-gray-900">
               <div className="flex flex-wrap items-center justify-between px-6 pb-4 border-b dark:border-gray-700">
                 <h2 className="mb-4 text-xl font-bold md:mb-0 dark:text-gray-400">
-                  List of Products
+                  List of Packages
                 </h2>
               </div>
               <div className="p-4 overflow-x-auto">

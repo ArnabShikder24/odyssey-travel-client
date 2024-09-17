@@ -50,31 +50,31 @@ export default function DashLayout({ children }) {
         <div className="demo-logo-vertical" />
               {/* <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} /> */}
               <Link href="/dashboard">
-        <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-green-400 ${pathname === "/dashboard" && "bg-green-400"}`}>
+        <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-purple-400 ${pathname === "/dashboard" && "bg-purple-400"}`}>
           <ShopOutlined />
           <span>Dashboard</span>
             </div>
             </Link>
         <Link href="/dashboard/AddPackages">
-            <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-green-400 ${pathname === "/dashboard/AddProduct" && "bg-green-400"}`}>
+            <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-purple-400 ${pathname === "/dashboard/AddPackages" && "bg-purple-400"}`}>
             <CloudOutlined />
             <span>Add Packages</span>
             </div>
         </Link>
         <Link href="/dashboard/AllPackages">
-        <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-green-400 ${pathname === "/dashboard/AllProduct" && "bg-green-400"}`}>
+        <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-purple-400 ${pathname === "/dashboard/AllPackages" && "bg-purple-400"}`}>
           <ShopOutlined />
           <span>All Packages</span>
         </div>
         </Link>
         <Link href="/dashboard/AllUser">
-        <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-green-400 ${pathname === "/dashboard/AllUser" && "bg-green-400"}`}>
+        <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-purple-400 ${pathname === "/dashboard/AllUser" && "bg-purple-400"}`}>
           <ShopOutlined />
           <span>All User</span>
           </div>
         </Link>
         <Link href="/dashboard/AllBooking">
-        <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-green-400 ${pathname === "/dashboard/AllOrder" && "bg-green-400"}`}>
+        <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-purple-400 ${pathname === "/dashboard/AllBooking" && "bg-purple-400"}`}>
           <ShopOutlined />
           <span>All Booking</span>
           </div>
