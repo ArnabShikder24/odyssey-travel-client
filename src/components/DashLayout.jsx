@@ -73,6 +73,12 @@ export default function DashLayout({ children }) {
             <span>Add Hotels</span>
             </div>
         </Link>
+        <Link href="/dashboard/AllHotels">
+        <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-purple-400 ${pathname === "/dashboard/AllHotels" && "bg-purple-400"}`}>
+          <ShopOutlined />
+          <span>All Hotels</span>
+        </div>
+        </Link>
         <Link href="/dashboard/AllUser">
         <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-purple-400 ${pathname === "/dashboard/AllUser" && "bg-purple-400"}`}>
           <ShopOutlined />
