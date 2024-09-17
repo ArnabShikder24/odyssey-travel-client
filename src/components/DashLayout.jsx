@@ -91,6 +91,18 @@ export default function DashLayout({ children }) {
           <span>All Flights</span>
         </div>
         </Link>
+        <Link href="/dashboard/AddGuides">
+            <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-purple-400 ${pathname === "/dashboard/AddGuides" && "bg-purple-400"}`}>
+            <CloudOutlined />
+            <span>Add Guides</span>
+            </div>
+        </Link>
+        <Link href="/dashboard/AllGuides">
+        <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-purple-400 ${pathname === "/dashboard/AllGuides" && "bg-purple-400"}`}>
+          <ShopOutlined />
+          <span>All Guides</span>
+        </div>
+        </Link>
         <Link href="/dashboard/AllUser">
         <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-purple-400 ${pathname === "/dashboard/AllUser" && "bg-purple-400"}`}>
           <ShopOutlined />

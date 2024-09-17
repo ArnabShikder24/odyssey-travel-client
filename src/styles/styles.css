@@ -71,7 +71,7 @@
 
 .sec p {
     font-size: 1em;
-    color: #ffffff;
+    /* color: #ffffff; */
     font-weight: 300;
     font-family: 'Poppins', sans-serif;
 }
