@@ -55,16 +55,16 @@ export default function DashLayout({ children }) {
           <span>Dashboard</span>
             </div>
             </Link>
-        <Link href="/dashboard/AddProduct">
+        <Link href="/dashboard/AddPackages">
             <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-green-400 ${pathname === "/dashboard/AddProduct" && "bg-green-400"}`}>
             <CloudOutlined />
-            <span>Add Product</span>
+            <span>Add Packages</span>
             </div>
         </Link>
-        <Link href="/dashboard/AllProduct">
+        <Link href="/dashboard/AllPackages">
         <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-green-400 ${pathname === "/dashboard/AllProduct" && "bg-green-400"}`}>
           <ShopOutlined />
-          <span>All Product</span>
+          <span>All Packages</span>
         </div>
         </Link>
         <Link href="/dashboard/AllUser">

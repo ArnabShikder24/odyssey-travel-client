@@ -5,7 +5,7 @@ import axios from "axios";
 import UpdateProduct from "@/components/UpdateProduct";
 const { Modal } = require("antd");
 
-export default function AllProduct() {
+export default function AllPackages() {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -16,12 +16,12 @@ export default function AllProduct() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v1/products", {
+        const response = await axios.get("http://localhost:5000/api/v1/pack", {
           headers: {
             Accept: "application/json",
           },
         });
-        setProducts(response.data.data);
+        setProducts(response.data);
         setLoading(false);
       } catch (error) {
         setError(error.message);
@@ -62,24 +62,19 @@ export default function AllProduct() {
                 <table className="w-full table-auto">
                   <thead>
                     <tr className="text-sm text-left text-gray-500 dark:text-gray-400">
-                      <th className="px-6 pb-3 text-lg text-purple-600">Product ID</th>
-                      <th className="px-6 pb-3 text-lg text-purple-600">Title</th>
-                      <th className="px-6 pb-3 text-lg text-purple-600">Category</th>
-                      <th className="px-6 pb-3 text-lg text-purple-600">Color</th>
-                      <th className="px-6 pb-3 text-lg text-purple-600">Price</th>
-                      <th className="px-6 pb-3 text-lg text-purple-600">Quantity</th>
-                      <th className="px-6 pb-3 text-lg text-purple-600">Operations</th>
+                      <th className="px-6 pb-3 text-lg text-purple-600">Package ID</th>
+                      <th className="px-6 pb-3 text-lg text-purple-600">name</th>
+                      <th className="px-6 pb-3 text-lg text-purple-600">details</th>
+                      <th className="px-6 pb-3 text-lg text-purple-600">price</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {products.map((product) => (
+                    {products?.map((product) => (
                       <tr key={product.product_id} className="text-sm border border-red-300">
-                        <td className="px-6 py-5 font-medium">{product.product_id}</td>
-                        <td className="px-6 py-5 font-medium">{product.title}</td>
-                        <td className="px-6 py-5 font-medium">{product.category}</td>
-                        <td className="px-6 py-5 font-medium">{product.color}</td>
+                        <td className="px-6 py-5 font-medium">{product.package_id}</td>
+                        <td className="px-6 py-5 font-medium">{product.name}</td>
+                        <td className="px-6 py-5 font-medium">{product.details}</td>
                         <td className="px-6 py-5 font-medium">{product.price}</td>
-                        <td className="px-6 py-5 font-medium">{product.quantity}</td>
                         <td className="flex items-center px-6 py-5 ">
                           <button
                             type="button"
@@ -123,6 +118,6 @@ export default function AllProduct() {
   );
 }
 
-AllProduct.getLayout = function getLayout(page) {
+AllPackages.getLayout = function getLayout(page) {
   return <DashLayout>{page}</DashLayout>;
 };
