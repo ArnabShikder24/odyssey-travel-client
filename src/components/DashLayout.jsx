@@ -73,10 +73,10 @@ export default function DashLayout({ children }) {
           <span>All User</span>
           </div>
         </Link>
-        <Link href="/dashboard/AllOrder">
+        <Link href="/dashboard/AllBooking">
         <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-green-400 ${pathname === "/dashboard/AllOrder" && "bg-green-400"}`}>
           <ShopOutlined />
-          <span>All Order</span>
+          <span>All Booking</span>
           </div>
         </Link>
       </Sider>

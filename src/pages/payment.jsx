@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const payment = () => {
+const Payment = () => {
   return (
     <di>
       <div className="bg-green-100 p-4 h-screen">
@@ -183,5 +183,5 @@ const payment = () => {
   );
 };
 
-export default payment;
+export default Payment;
 

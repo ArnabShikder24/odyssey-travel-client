@@ -33,10 +33,10 @@ export default function AllPackages() {
     fetchData();
   }, [message, modalShow]);
 
-  const handleDelete = async (productId) => {
+  const handleDelete = async (package_id) => {
     const randomNumber = Math.floor(Math.random() * 100) + 1;
     try {
-        const response = await axios.get(`http://localhost:5000/api/v1/product/delete?product_id=${productId}`);
+        const response = await axios.get(`http://localhost:5000/api/v1/pack/delete?package_id=${package_id}`);
         setMessage(`${response.data.message}, ${randomNumber}`);
     } catch (error) {
         setMessage(`${error.response.data.message}, ${randomNumber}`);
@@ -81,14 +81,14 @@ export default function AllPackages() {
                             className="text-blue-700 bg-white hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800"
                             onClick={() => {
                               setModalShow(true)
-                              setPId(product?.product_id)
+                              setPId(product?.package_id)
                             }}
                           >
                             Update
                           </button>
                           <button
                         type="button"
-                        onClick={() => handleDelete(product.product_id)}
+                        onClick={() => handleDelete(product.package_id)}
                             className="text-red-700 bg-white hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
                           >
                             Delete

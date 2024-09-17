@@ -4,21 +4,18 @@ import { toast } from "react-toastify";
 
 export default function UpdateProduct({ product_id, setModalShow, setPId }) {
     const [formData, setFormData] = useState({
-        product_id: null,
-        title: "",
+        package_id: null,
+        name: "",
+        details: "",
         price: "",
-        quantity: "",
-        img: "",
-        category: "",
-        color: "",
-        description: ""
+        img_url: ""
     });
     const [loading, setLoading] = useState(true);
     
   
     useEffect(() => {
       const fetchProduct = async () => {
-          const url = `http://localhost:5000/api/v1/product?product_id=${product_id}`;
+          const url = `http://localhost:5000/api/v1/packbyid?package_id=${product_id}`;
           try {
               const response = await axios.get(url, {
                 headers: {
@@ -53,18 +50,15 @@ export default function UpdateProduct({ product_id, setModalShow, setPId }) {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        const response = await axios.post("http://localhost:5000/api/v1/product/update", formData);
-        console.log("Product Updated successfully:", response.data.message);
-        toast.success("Product Updated successfully");
+        const response = await axios.post("http://localhost:5000/api/v1/pack/update", formData);
+        console.log("package Updated successfully:", response.data.message);
+        toast.success("Package Updated successfully");
         setFormData({
-          product_id: null,
-          title: "",
-          price: "",
-          quantity: "",
-          img: "",
-          category: "",
-          color: "",
-          description: ""
+            package_id: null,
+            name: "",
+            details: "",
+            price: "",
+            img_url: ""
         });
         setModalShow(false);
         setPId(null);
@@ -80,20 +74,20 @@ export default function UpdateProduct({ product_id, setModalShow, setPId }) {
             <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
                 <h1 className="mb-16 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-4xl dark:text-white">
                 Update {" "}
-                <span className="text-blue-600 dark:text-blue-500">Product</span>
+                <span className="text-blue-600 dark:text-blue-500">Package</span>
                 </h1>
                 <div className="mb-5">
                 <label
                     htmlFor="product_title"
                     className="m-4 flex justify-start items-start text-base font-medium text-gray-900 dark:text-white"
                 >
-                    Title :
+                    Name :
                 </label>
                 <input
                     type="text"
                     id="product_title"
-                    name="title"
-                    value={formData.title}
+                    name="name"
+                    value={formData.name}
                     onChange={handleChange}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
@@ -119,13 +113,13 @@ export default function UpdateProduct({ product_id, setModalShow, setPId }) {
                     htmlFor="product_quantity"
                     className="m-4 flex justify-start items-start text-base font-medium text-gray-900 dark:text-white"
                 >
-                    Quantity :
+                    Details :
                 </label>
                 <input
-                    type="number"
+                    type="text"
                     id="product_quantity"
-                    name="quantity"
-                    value={formData.quantity}
+                    name="details"
+                    value={formData.details}
                     onChange={handleChange}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
@@ -140,56 +134,8 @@ export default function UpdateProduct({ product_id, setModalShow, setPId }) {
                 <input
                     type="text"
                     id="product_image"
-                    name="img"
-                    value={formData.img}
-                    onChange={handleChange}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                />
-                </div>
-                <div className="mb-5">
-                <label
-                    htmlFor="product_category"
-                    className="m-4 flex justify-start items-start text-base font-medium text-gray-900 dark:text-white"
-                >
-                    Category :
-                </label>
-                <input
-                    type="text"
-                    id="product_category"
-                    name="category"
-                    value={formData.category}
-                    onChange={handleChange}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                />
-                </div>
-                <div className="mb-5">
-                <label
-                    htmlFor="product_color"
-                    className="m-4 flex justify-start items-start text-base font-medium text-gray-900 dark:text-white"
-                >
-                    Color :
-                </label>
-                <input
-                    type="text"
-                    id="product_color"
-                    name="color"
-                    value={formData.color}
-                    onChange={handleChange}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                />
-                </div>
-                <div className="mb-5">
-                <label
-                    htmlFor="product_description"
-                    className="m-4 flex justify-start items-start text-base font-medium text-gray-900 dark:text-white"
-                >
-                    Description :
-                </label>
-                <input
-                    type="text"
-                    id="product_description"
-                    name="description"
-                    value={formData.description}
+                    name="img_url"
+                    value={formData.img_url}
                     onChange={handleChange}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const flight = () => {
+const Flight = () => {
   return (
     <div>
       <section className="py-10 lg:py-20 bg-green-100 font-poppins dark:bg-gray-800">
@@ -552,9 +552,9 @@ const flight = () => {
   );
 };
 
-export default flight;
+export default Flight;
 
-flight.getLayout = function getLayout(page) {
+Flight.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
 

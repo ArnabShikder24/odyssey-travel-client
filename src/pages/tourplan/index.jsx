@@ -1,10 +1,48 @@
+import React, { useEffect, useState } from "react";
 import RootLayout from "@/components/RootLayout";
+import { auth } from "@/lib/firebase";
 import { pathname } from "@/routes/routes.index";
+import axios from "axios";
+import { onAuthStateChanged } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
-const tourplan = () => {
+const Tourplan = () => {
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState(null);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/v1/products', {
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        setProducts(response.data.data);
+      } catch (error) {
+        setError(error.message);
+        console.error('Error fetching products:', error.message);
+      }
+    };
+
+    fetchData();
+  }, []); 
+  if (loading) {
+    return <p>Loading...</p>
+  }
   return (
     <div className="flex items-center justify-center min-h-screen bg-green-100 flex-wrap py-28 gap-11">
       {[...Array(8)].map((_, index) => (
@@ -76,7 +114,7 @@ const tourplan = () => {
               </div>
             </div>
 
-            <Link href={pathname.cardDetails} className="mt-3 w-full text-center rounded-lg bg-green-500 p-3 text-sm font-semibold text-white shadow-xl shadow-green-700/30 outline-none transition-transform hover:scale-105 hover:border-b-indigo-600 hover:bg-indigo-600 focus:scale-105 focus:bg-indigo-600 focus:ring-2">
+            <Link href={pathname.tourPlan+"/abcd"} className="mt-3 w-full text-center rounded-lg bg-green-500 p-3 text-sm font-semibold text-white shadow-xl shadow-green-700/30 outline-none transition-transform hover:scale-105 hover:border-b-indigo-600 hover:bg-indigo-600 focus:scale-105 focus:bg-indigo-600 focus:ring-2">
               Select Package
             </Link>
           </div>
@@ -86,8 +124,8 @@ const tourplan = () => {
   );
 };
 
-export default tourplan;
+export default Tourplan;
 
-tourplan.getLayout = function getLayout(page) {
+Tourplan.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };

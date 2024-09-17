@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const cardDetails = () => {
+const CardDetails = () => {
   return (
     <div className="bg-green-100">
       <section className="py-12 sm:py-16">
@@ -244,9 +244,9 @@ const cardDetails = () => {
   );
 };
 
-export default cardDetails;
+export default CardDetails;
 
-cardDetails.getLayout = function getLayout(page) {
+CardDetails.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
 

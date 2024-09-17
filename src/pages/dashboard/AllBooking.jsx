@@ -2,7 +2,7 @@ import DashLayout from "@/components/DashLayout";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function AllOrder() {
+export default function AllBooking() {
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -74,6 +74,6 @@ export default function AllOrder() {
   );
 }
 
-AllOrder.getLayout = function getLayout(page) {
+AllBooking.getLayout = function getLayout(page) {
   return <DashLayout>{page}</DashLayout>;
 };

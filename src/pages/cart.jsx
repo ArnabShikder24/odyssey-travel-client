@@ -2,7 +2,7 @@ import RootLayout from "@/components/RootLayout";
 import Image from "next/image";
 import React from "react";
 
-const cart = () => {
+const Cart = () => {
   return (
     <div className="bg-green-100 pt-20">
       <div className="font-sans max-w-6xl max-lg:max-w-2xl mx-auto p-4">
@@ -510,9 +510,9 @@ const cart = () => {
   );
 };
 
-export default cart;
+export default Cart;
 
-cart.getLayout = function getLayout(page) {
+Cart.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
 
