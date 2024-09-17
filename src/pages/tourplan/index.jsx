@@ -54,6 +54,7 @@ const Tourplan = () => {
             <Image
               height={200}
               width={500}
+              className="w-full h-[300px]"
               src={product.img_url}
               alt=""
             />

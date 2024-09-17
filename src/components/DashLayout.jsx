@@ -67,6 +67,12 @@ export default function DashLayout({ children }) {
           <span>All Packages</span>
         </div>
         </Link>
+        <Link href="/dashboard/AddHotels">
+            <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-purple-400 ${pathname === "/dashboard/AddHotels" && "bg-purple-400"}`}>
+            <CloudOutlined />
+            <span>Add Hotels</span>
+            </div>
+        </Link>
         <Link href="/dashboard/AllUser">
         <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-purple-400 ${pathname === "/dashboard/AllUser" && "bg-purple-400"}`}>
           <ShopOutlined />
@@ -107,7 +113,7 @@ export default function DashLayout({ children }) {
             textAlign: 'center',
           }}
         >
-          IStore ©{new Date().getFullYear()} 
+          Odyssey ©{new Date().getFullYear()} 
         </Footer>
       </Layout>
     </Layout>

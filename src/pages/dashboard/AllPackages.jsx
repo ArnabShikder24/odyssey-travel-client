@@ -73,7 +73,7 @@ export default function AllPackages() {
                       <tr key={product.product_id} className="text-sm border border-red-300">
                         <td className="px-6 py-5 font-medium">{product.package_id}</td>
                         <td className="px-6 py-5 font-medium">{product.name}</td>
-                        <td className="px-6 py-5 font-medium">{product.details}</td>
+                        <td className="px-6 py-5 font-medium">{product.details.slice(0, 10)}</td>
                         <td className="px-6 py-5 font-medium">{product.price}</td>
                         <td className="flex items-center px-6 py-5 ">
                           <button

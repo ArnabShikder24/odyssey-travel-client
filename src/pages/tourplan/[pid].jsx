@@ -137,7 +137,12 @@ const CardDetails = () => {
                   1,209 Reviews
                 </p>
               </div>
-
+              <p className="ml-2 mt-5 text-lg font-medium text-gray-500">
+                  Description
+                </p>
+              <p className="ml-2 mt-2 text-sm font-medium text-gray-500">
+                  {product.details}
+                </p>
               <h2 className="mt-8 text-base text-gray-900">Package Type</h2>
               <div className="mt-3 flex select-none flex-wrap items-center gap-1">
                 <label className="">
