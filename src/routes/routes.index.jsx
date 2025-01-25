@@ -12,5 +12,5 @@ export const pathname = {
   confirmed: "/confirmed",
   login: "/login",
   signup: "/signup",
-
+  forgotPassword: "/forgot-password",
 }
