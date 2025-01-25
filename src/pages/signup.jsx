@@ -1,6 +1,6 @@
 import { auth } from "@/lib/firebase";
 import axios from "axios";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, sendEmailVerification, signInWithPopup, updateProfile } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -23,6 +23,11 @@ const SignUp = () => {
         displayName: name,
       });
       console.log('New User Created:', user);
+
+       // Send verification email
+      await sendEmailVerification(user);
+      toast.info("Verification email sent. Please check your inbox.");
+
       const userData = {
         username: name,
         email: email
