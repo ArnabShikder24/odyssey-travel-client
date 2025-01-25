@@ -8,7 +8,7 @@ import { pathname } from "@/routes/routes.index";
 export default function Navbar() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  console.log(user);
   const router = useRouter();
   const currentRouter = router.pathname;
 
@@ -21,10 +21,6 @@ export default function Navbar() {
     return () => unsubscribe();
   }, []);
 
-  const handleLogout = async () => {
-    await signOut(auth);
-    router.push("/login");
-  };
   console.log(currentRouter);
   return (
     <header className="header">
@@ -42,7 +38,7 @@ export default function Navbar() {
             <>
               {user ? (
             <>
-              <button className="bg-red-500 px-5 py-1  rounded-md text-white" onClick={handleLogout}>Logout</button>
+              <Link className={`${currentRouter !== pathname.home ? `${currentRouter === pathname.profile ? "text-white" : "text-gray-500"}` : "text-green-200"} py-1.5 px-4 rounded-full mx-2 font-medium hover:bg-[#359381] hover:text-white ${currentRouter === pathname.profile && "bg-[#359381]"} active:text-white`} href={pathname.profile}>Profile</Link>
             </>
           ) : (
             <Link className={`${currentRouter !== pathname.home ? `${currentRouter === pathname.login ? "text-white" : "text-gray-500"}` : "text-white"} py-1.5 px-4 rounded-full mx-2 font-medium hover:bg-[#359381] hover:text-white active:text-white`} href={pathname.login}>Login</Link>

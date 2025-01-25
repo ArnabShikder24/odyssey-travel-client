@@ -13,4 +13,5 @@ export const pathname = {
   login: "/login",
   signup: "/signup",
   forgotPassword: "/forgot-password",
+  profile: "/profile",
 }
