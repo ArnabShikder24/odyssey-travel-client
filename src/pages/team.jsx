@@ -41,12 +41,6 @@ const DeveloperPage = () => {
       imageUrl: sakib 
     },
     {
-      name: 'Mohammad Ohidul Alam ',
-      role: 'Frontend Engineer & UI/UX Designer',
-      description: "I'm Mohammad Ohidul Alam from Bangladesh, and I work in Front-end web development. I really enjoy working as well as learning languages and frameworks like JS, React JS. ",
-      imageUrl: ohid 
-    },
-    {
       name: 'Sayed Hossain',
       role: 'Analyzer & Research',
       description: "I'm Sayed Hossain An Analyzer examines data to identify trends and insights, while a Researcher conducts investigations to gather and analyze information, contributing to knowledge and decision-making.",
@@ -64,7 +58,7 @@ const DeveloperPage = () => {
     <div className='bg-green-100 pt-20'>
       <div className="flex flex-col items-center justify-center min-h-screen py-6 container mx-auto">
       <h1 className="text-4xl font-bold mb-10">Meet Our Team</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {developers.map((developer, index) => (
           <DeveloperCard key={index} {...developer} />
         ))}

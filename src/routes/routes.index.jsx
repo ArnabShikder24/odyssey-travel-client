@@ -2,7 +2,7 @@ export const pathname = {
   home: "/",
   about: "/about",
   contact: "/contact",
-  developer: "/developer",
+  developer: "/team",
   tourPlan: "/tourplan",
   cardDetails: "/cardDetails",
   cart: "/cart",
