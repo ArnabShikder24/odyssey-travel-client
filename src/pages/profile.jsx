@@ -1,14 +1,16 @@
 // pages/profile.js
 import { useEffect, useState } from "react";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { useRouter } from "next/router";
 import { auth } from "@/lib/firebase";
+import { onAuthStateChanged, signOut, sendEmailVerification } from "firebase/auth";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 import RootLayout from "@/components/RootLayout";
 import { pathname } from "@/routes/routes.index";
 
 function Profile() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [verificationSent, setVerificationSent] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -26,6 +28,19 @@ function Profile() {
       router.push(pathname.login);
     } catch (error) {
       console.error("Error logging out:", error);
+    }
+  };
+
+  const handleSendVerificationEmail = async () => {
+    if (user && !user.emailVerified) {
+      try {
+        await sendEmailVerification(user);
+        setVerificationSent(true);
+        toast.success("Verification email sent! Please check your inbox.");
+      } catch (error) {
+        console.error("Error sending verification email:", error);
+        toast.error("Failed to send verification email. Try again.");
+      }
     }
   };
 
@@ -53,6 +68,11 @@ function Profile() {
         <h2 className="text-2xl font-bold mb-4 text-center">Profile</h2>
         <div className="mb-4">
           <p className="text-lg">
+            <strong>Name:</strong> {user.displayName || "Not Set"}
+          </p>
+        </div>
+        <div className="mb-4">
+          <p className="text-lg">
             <strong>Email:</strong> {user.email}
           </p>
         </div>
@@ -65,6 +85,19 @@ function Profile() {
               <span className="text-red-500">No</span>
             )}
           </p>
+          {!user.emailVerified && !verificationSent && (
+            <button
+              className="bg-blue-500 text-white px-4 py-2 rounded-md mt-2 hover:bg-blue-600"
+              onClick={handleSendVerificationEmail}
+            >
+              Send Verification Email
+            </button>
+          )}
+          {verificationSent && (
+            <p className="text-sm text-green-500 mt-2">
+              Verification email sent! Check your inbox.
+            </p>
+          )}
         </div>
         <div className="text-center">
           <button

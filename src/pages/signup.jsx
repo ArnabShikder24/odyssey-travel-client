@@ -1,6 +1,6 @@
 import { auth } from "@/lib/firebase";
 import axios from "axios";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -18,6 +18,10 @@ const SignUp = () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
       const user = userCredential.user;
+      // Set the display name
+      await updateProfile(user, {
+        displayName: name,
+      });
       console.log('New User Created:', user);
       const userData = {
         username: name,
