@@ -32,7 +32,7 @@ const SignUp = () => {
         username: name,
         email: email
       };
-      const response = await axios.post('http://localhost:5000/api/v1/user/create', userData);
+      const response = await axios.post('http://localhost:8000/api/user/create', userData);
       console.log('New User Created:', user, response);
       toast.success("Successfully Create User");
       router.push('/');
