@@ -10,7 +10,7 @@ export default function AllUser() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v1/users", {
+        const response = await axios.get("http://localhost:8000/api/users", {
           headers: {
             Accept: "application/json",
           },
