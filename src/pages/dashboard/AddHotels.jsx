@@ -22,7 +22,7 @@ export default function AddHotels() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:5000/api/v1/hotel/create", formData);
+            const response = await axios.post("http://localhost:8000/api/hotel/create", formData);
             console.log("Hotel added successfully:", response.data.message);
             toast.success("Hotel added successfully");
             setFormData({

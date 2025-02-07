@@ -13,12 +13,12 @@ export default function AllHotels() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v1/hotels", {
+        const response = await axios.get("http://127.0.0.1:8000/api/hotels", {
           headers: {
             Accept: "application/json",
           },
         });
-        setProducts(response.data);
+        setProducts(response?.data?.hotels);
         setLoading(false);
       } catch (error) {
         setError(error.message);
@@ -33,7 +33,7 @@ export default function AllHotels() {
   const handleDelete = async (hotel_id) => {
     const randomNumber = Math.floor(Math.random() * 100) + 1;
     try {
-        const response = await axios.get(`http://localhost:5000/api/v1/hotel/delete?hotel_id=${hotel_id}`);
+        const response = await axios.delete(`http://localhost:8000/api/hotel/${hotel_id}`);
         setMessage(`${response.data.message}, ${randomNumber}`);
     } catch (error) {
         setMessage(`${error.response.data.message}, ${randomNumber}`);
@@ -68,7 +68,7 @@ export default function AllHotels() {
                   </thead>
                   <tbody>
                     {products?.map((product) => (
-                      <tr key={product.product_id} className="text-sm border border-red-300">
+                      <tr key={product.hotel_id} className="text-sm border border-red-300">
                         <td className="px-6 py-5 font-medium">{product.hotel_id}</td>
                         <td className="px-6 py-5 font-medium">{product.hotel_name}</td>
                         <td className="px-6 py-5 font-medium">{product.location.slice(0, 10)}</td>
