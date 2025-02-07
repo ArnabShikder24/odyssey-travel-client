@@ -26,10 +26,10 @@ export default function AddHotels() {
             console.log("Hotel added successfully:", response.data.message);
             toast.success("Hotel added successfully");
             setFormData({
-              hotel_name: "",
-              location: "",
-              price_per_night: "",
-              rating: ""
+                hotel_name: "",
+                location: "",
+                price_per_night: "",
+                rating: ""
             });
         } catch (error) {
             console.error("Error adding Hotel:", error.message);
