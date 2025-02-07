@@ -16,7 +16,7 @@ export default function AllPackages() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v1/pack", {
+        const response = await axios.get("http://127.0.0.1:8000/api/packages", {
           headers: {
             Accept: "application/json",
           },
@@ -36,7 +36,7 @@ export default function AllPackages() {
   const handleDelete = async (package_id) => {
     const randomNumber = Math.floor(Math.random() * 100) + 1;
     try {
-        const response = await axios.get(`http://localhost:5000/api/v1/pack/delete?package_id=${package_id}`);
+        const response = await axios.delete(`http://127.0.0.1:8000/api/package?package_id=${package_id}`);
         setMessage(`${response.data.message}, ${randomNumber}`);
     } catch (error) {
         setMessage(`${error.response.data.message}, ${randomNumber}`);

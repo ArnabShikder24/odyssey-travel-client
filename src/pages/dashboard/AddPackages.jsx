@@ -22,7 +22,7 @@ export default function AddPackages() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:5000/api/v1/pack/create", formData);
+            const response = await axios.post("http://127.0.0.1:8000/api/package/create", formData);
             console.log("Package added successfully:", response.data.message);
             toast.success("Package added successfully");
             setFormData({

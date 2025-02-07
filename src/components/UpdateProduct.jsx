@@ -15,7 +15,7 @@ export default function UpdateProduct({ product_id, setModalShow, setPId }) {
   
     useEffect(() => {
       const fetchProduct = async () => {
-          const url = `http://localhost:5000/api/v1/packbyid?package_id=${product_id}`;
+          const url = `http://127.0.0.1:8000/api/package?package_id=${product_id}`;
           try {
               const response = await axios.get(url, {
                 headers: {
@@ -50,7 +50,7 @@ export default function UpdateProduct({ product_id, setModalShow, setPId }) {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        const response = await axios.post("http://localhost:5000/api/v1/pack/update", formData);
+        const response = await axios.put("http://127.0.0.1:8000/api/package/update", formData);
         console.log("package Updated successfully:", response.data.message);
         toast.success("Package Updated successfully");
         setFormData({
