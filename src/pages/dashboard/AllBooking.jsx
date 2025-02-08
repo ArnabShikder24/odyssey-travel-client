@@ -10,12 +10,12 @@ export default function AllBooking() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v1/orders", {
-          headers: {
-            Accept: "application/json",
-          },
-        });
-        setOrders(response.data.data);
+        // const response = await axios.get("http://localhost:5000/api/v1/orders", {
+        //   headers: {
+        //     Accept: "application/json",
+        //   },
+        // });
+        // setOrders(response.data.data);
         setLoading(false);
       } catch (error) {
         setError(error.message);
@@ -48,7 +48,6 @@ export default function AllBooking() {
                     <tr className="text-sm text-left text-gray-500 dark:text-gray-400">
                       <th className="px-6 pb-3 text-lg text-purple-600">User ID</th>
                       <th className="px-6 pb-3 text-lg text-purple-600">Product ID</th>
-                      <th className="px-6 pb-3 text-lg text-purple-600">Quantity</th>
                       <th className="px-6 pb-3 text-lg text-purple-600">Subtotal</th>
                       <th className="px-6 pb-3 text-lg text-purple-600">Email</th>
                     </tr>
@@ -58,7 +57,6 @@ export default function AllBooking() {
                       <tr key={index} className="text-sm border border-red-300">
                         <td className="px-6 py-5 font-medium">{order.user_id}</td>
                         <td className="px-6 py-5 font-medium">{order.product_id}</td>
-                        <td className="px-6 py-5 font-medium">{order.quantity}</td>
                         <td className="px-6 py-5 font-medium">{order.subtotal}</td>
                         <td className="px-6 py-5 font-medium">{order.email}</td>
                       </tr>
