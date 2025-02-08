@@ -13,7 +13,7 @@ export default function AllFlights() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v1/flights", {
+        const response = await axios.get("http://127.0.0.1:8000/api/flights", {
           headers: {
             Accept: "application/json",
           },
@@ -33,7 +33,8 @@ export default function AllFlights() {
   const handleDelete = async (flight_id) => {
     const randomNumber = Math.floor(Math.random() * 100) + 1;
     try {
-        const response = await axios.get(`http://localhost:5000/api/v1/flight/delete?flight_id=${flight_id}`);
+      const response = await axios.delete(`http://localhost:8000/api/flight?flight_id=${flight_id}`);
+      console.log(response);
         setMessage(`${response.data.message}, ${randomNumber}`);
     } catch (error) {
         setMessage(`${error.response.data.message}, ${randomNumber}`);

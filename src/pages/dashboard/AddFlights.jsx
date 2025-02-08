@@ -23,7 +23,7 @@ export default function AddFlights() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:5000/api/v1/flight/create", formData);
+            const response = await axios.post("http://127.0.0.1:8000/api/flight/create", formData);
             console.log("Flight added successfully:", response.data.message);
             toast.success("Flight added successfully");
             setFormData({
