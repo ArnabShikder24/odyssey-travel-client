@@ -14,7 +14,7 @@ export default function AllGuides() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v1/tour_guides", {
+        const response = await axios.get("http://127.0.0.1:8000/api/tour-guide/all", {
           headers: {
             Accept: "application/json",
           },
@@ -34,7 +34,7 @@ export default function AllGuides() {
   const handleDelete = async (guide_id) => {
     const randomNumber = Math.floor(Math.random() * 100) + 1;
     try {
-      const response = await axios.get(`http://localhost:5000/api/v1/tour_guide/delete?guide_id=${guide_id}`);
+      const response = await axios.delete(`http://localhost:8000/api/tour-guide/${guide_id}`);
       setMessage(`${response.data.message}, ${randomNumber}`);
     } catch (error) {
       setMessage(`${error.response.data.message}, ${randomNumber}`);
@@ -64,6 +64,7 @@ export default function AllGuides() {
                       <th className="px-6 pb-3 text-lg text-purple-600">Name</th>
                       <th className="px-6 pb-3 text-lg text-purple-600">Location</th>
                       <th className="px-6 pb-3 text-lg text-purple-600">Rating</th>
+                      <th className="px-6 pb-3 text-lg text-purple-600">price</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -73,6 +74,7 @@ export default function AllGuides() {
                         <td className="px-6 py-5 font-medium">{guide.name}</td>
                         <td className="px-6 py-5 font-medium">{guide.location.slice(0, 10)}</td>
                         <td className="px-6 py-5 font-medium">{guide.rating}</td>
+                        <td className="px-6 py-5 font-medium">{guide.price}</td>
                         <td className="flex items-center px-6 py-5">
                           <button
                             type="button"
