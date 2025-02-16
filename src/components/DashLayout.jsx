@@ -31,7 +31,6 @@ const items = [
 export default function DashLayout({ children }) {
   const router = useRouter();
   const { pathname } = router;
-  console.log(pathname);
     const {
         token: { colorBgContainer, borderRadiusLG },
       } = theme.useToken();
