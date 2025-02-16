@@ -6,16 +6,37 @@ import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import RootLayout from "@/components/RootLayout";
 import { pathname } from "@/routes/routes.index";
+import axios from "axios";
 
 function Profile() {
   const [user, setUser] = useState(null);
+  const [role, setRole] = useState("user");
   const [loading, setLoading] = useState(true);
   const [verificationSent, setVerificationSent] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+        const email = currentUser.email;
+
+        try {
+          const response = await axios.post("http://127.0.0.1:8000/api/getUserByEmail", {
+            email: email,
+          });
+
+          if (response?.data?.role) {
+            setRole(response?.data?.role)
+          } else {
+            setRole("user")
+          }
+
+        } catch (error) {
+          console.error("Error fetching user role:", error);
+          router.push("/");
+        }
+      }
       setLoading(false);
     });
 
@@ -74,6 +95,11 @@ function Profile() {
         <div className="mb-4">
           <p className="text-lg">
             <strong>Email:</strong> {user.email}
+          </p>
+        </div>
+        <div className="mb-4">
+          <p className="text-lg">
+            <strong>Role:</strong> {role}
           </p>
         </div>
         <div className="mb-4">
