@@ -10,7 +10,7 @@ import axios from "axios";
 
 function Profile() {
   const [user, setUser] = useState(null);
-  const [role, setRole] = useState("user");
+  const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
   const [verificationSent, setVerificationSent] = useState(false);
   const router = useRouter();
@@ -27,9 +27,9 @@ function Profile() {
           });
 
           if (response?.data?.role) {
-            setRole(response?.data?.role)
+            setIsAdmin(true);
           } else {
-            setRole("user")
+            setIsAdmin(false);
           }
 
         } catch (error) {
@@ -99,9 +99,17 @@ function Profile() {
         </div>
         <div className="mb-4">
           <p className="text-lg">
-            <strong>Role:</strong> {role}
+            <strong>Role:</strong> {isAdmin ? "Admin" : "user"}
           </p>
         </div>
+        {
+          isAdmin &&
+          <div className="mb-4">
+            <p className="text-lg">
+              <strong>Dashboard:</strong> <button onClick={() => router.push(pathname.dashboardMain)} className="bg-green-400 text-white px-4 py-1 rounded ml-3">Click</button>
+            </p>
+          </div>
+        }
         <div className="mb-4">
           <p className="text-lg">
             <strong>Email Verified:</strong>{" "}
