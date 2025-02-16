@@ -48,13 +48,15 @@ export default function AllUser() {
                     <tr className="text-sm text-left text-gray-500 dark:text-gray-400">
                       <th className="px-6 pb-3 text-lg text-purple-600">Name</th>
                       <th className="px-6 pb-3 text-lg text-purple-600">Email</th>
+                      <th className="px-6 pb-3 text-lg text-purple-600">Role</th>
                     </tr>
                   </thead>
                   <tbody>
                     {users.map((user, index) => (
                       <tr key={index} className="text-sm border border-red-300">
-                        <td className="px-6 py-5 font-medium">{user.username}</td>
-                        <td className="px-6 py-5 font-medium">{user.email}</td>
+                        <td className="px-6 py-5 font-medium">{user?.username}</td>
+                        <td className="px-6 py-5 font-medium">{user?.email}</td>
+                        <td className="px-6 py-5 font-medium">{user?.role?.name || "user"}</td>
                       </tr>
                     ))}
                   </tbody>
