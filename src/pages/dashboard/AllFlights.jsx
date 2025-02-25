@@ -66,17 +66,19 @@ export default function AllFlights() {
                       <th className="px-6 pb-3 text-lg text-purple-600">Departure Time</th>
                       <th className="px-6 pb-3 text-lg text-purple-600">Arrival Time</th>
                       <th className="px-6 pb-3 text-lg text-purple-600">Price</th>
+                      <th className="px-6 pb-3 text-lg text-purple-600">Package id</th>
                     </tr>
                   </thead>
                   <tbody>
                     {flights?.map((flight) => (
                       <tr key={flight.flight_id} className="text-sm border border-red-300">
-                        <td className="px-6 py-5 font-medium">{flight.flight_id}</td>
-                        <td className="px-6 py-5 font-medium">{flight.flight_number}</td>
-                        <td className="px-6 py-5 font-medium">{flight.seat_class}</td>
-                        <td className="px-6 py-5 font-medium">{flight.departure_time.slice(0, 16)}</td>
-                        <td className="px-6 py-5 font-medium">{flight.arrival_time.slice(0, 16)}</td>
-                        <td className="px-6 py-5 font-medium">{flight.price}</td>
+                        <td className="px-6 py-5 font-medium">{flight?.flight_id}</td>
+                        <td className="px-6 py-5 font-medium">{flight?.flight_number}</td>
+                        <td className="px-6 py-5 font-medium">{flight?.seat_class}</td>
+                        <td className="px-6 py-5 font-medium">{flight?.departure_time.slice(0, 16)}</td>
+                        <td className="px-6 py-5 font-medium">{flight?.arrival_time.slice(0, 16)}</td>
+                        <td className="px-6 py-5 font-medium">{flight?.price}</td>
+                        <td className="px-6 py-5 font-medium">{flight?.package_id}</td>
                         <td className="flex items-center px-6 py-5">
                           <button
                             type="button"

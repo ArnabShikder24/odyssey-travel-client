@@ -65,16 +65,18 @@ export default function AllGuides() {
                       <th className="px-6 pb-3 text-lg text-purple-600">Location</th>
                       <th className="px-6 pb-3 text-lg text-purple-600">Rating</th>
                       <th className="px-6 pb-3 text-lg text-purple-600">price</th>
+                      <th className="px-6 pb-3 text-lg text-purple-600">Package Id</th>
                     </tr>
                   </thead>
                   <tbody>
                     {guides?.map((guide) => (
                       <tr key={guide.guide_id} className="text-sm border border-red-300">
-                        <td className="px-6 py-5 font-medium">{guide.guide_id}</td>
-                        <td className="px-6 py-5 font-medium">{guide.name}</td>
-                        <td className="px-6 py-5 font-medium">{guide.location.slice(0, 10)}</td>
-                        <td className="px-6 py-5 font-medium">{guide.rating}</td>
-                        <td className="px-6 py-5 font-medium">{guide.price}</td>
+                        <td className="px-6 py-5 font-medium">{guide?.guide_id}</td>
+                        <td className="px-6 py-5 font-medium">{guide?.name}</td>
+                        <td className="px-6 py-5 font-medium">{guide?.location.slice(0, 10)}</td>
+                        <td className="px-6 py-5 font-medium">{guide?.rating}</td>
+                        <td className="px-6 py-5 font-medium">{guide?.price}</td>
+                        <td className="px-6 py-5 font-medium">{guide?.package_id}</td>
                         <td className="flex items-center px-6 py-5">
                           <button
                             type="button"
