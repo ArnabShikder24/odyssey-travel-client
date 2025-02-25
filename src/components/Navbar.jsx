@@ -8,7 +8,6 @@ import { pathname } from "@/routes/routes.index";
 export default function Navbar() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  console.log(user);
   const router = useRouter();
   const currentRouter = router.pathname;
 
@@ -21,7 +20,6 @@ export default function Navbar() {
     return () => unsubscribe();
   }, []);
 
-  console.log(currentRouter);
   return (
     <header className="header">
       <h2 className="logo">Odyssey</h2>

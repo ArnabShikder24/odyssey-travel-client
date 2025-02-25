@@ -226,7 +226,7 @@ const CardDetails = () => {
                 </div>
 
                 <Link
-                  href={pathname.hotel}
+                  href={pathname.booking + `?package_id=${pid}`}
                   className="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-green-500 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
                 >
                   <svg
