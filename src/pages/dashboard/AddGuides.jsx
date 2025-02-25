@@ -1,4 +1,5 @@
 import DashLayout from "@/components/DashLayout";
+import usePackages from "@/hooks/usePackages";
 import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -8,8 +9,11 @@ export default function AddGuides() {
         name: "",
         location: "",
         rating: "",
-        price: ""
+        price: "",
+        package_id: "",
     });
+
+    const { packages, loading, error } = usePackages();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -35,6 +39,9 @@ export default function AddGuides() {
             toast.error("Error adding Tour Guide");
         }
     };
+
+    if (loading) return <p>Loading packages...</p>;
+    if (error) return <p>Error fetching packages!</p>;
 
     return (
         <div>
@@ -106,6 +113,28 @@ export default function AddGuides() {
                         onChange={handleChange}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     />
+                </div>
+                <div className="mb-5">
+                    <label
+                        htmlFor="package_id"
+                        className="m-4 flex justify-start items-start text-base font-medium text-gray-900 dark:text-white"
+                    >
+                        Select Package:
+                    </label>
+                    <select
+                        id="package_id"
+                        name="package_id"
+                        value={formData.package_id}
+                        onChange={handleChange}
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    >
+                        <option value="">Select a package</option>
+                        {packages?.map((packageItem) => (
+                            <option key={packageItem.package_id} value={packageItem.package_id}>
+                                {packageItem.name}
+                            </option>
+                        ))}
+                    </select>
                 </div>
                 <input className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="submit" value="Submit" />
             </form>
