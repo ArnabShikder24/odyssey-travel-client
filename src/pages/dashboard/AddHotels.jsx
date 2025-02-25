@@ -1,4 +1,5 @@
 import DashLayout from "@/components/DashLayout";
+import usePackages from "@/hooks/usePackages";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -11,17 +12,7 @@ export default function AddHotels() {
         rating: "",
         package_id: "",
     });
-    const [packages, setPackages] = useState([]);
-
-    useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/packages")
-            .then((res) => {
-                setPackages(res.data);
-            })
-            .catch((err) => {
-                console.error("Error fetching packages:", err);
-            });
-    }, []);
+    const { packages, loading, error } = usePackages();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -48,6 +39,10 @@ export default function AddHotels() {
             toast.error("Error adding Hotel");
         }
     };
+
+    if (loading) return <p>Loading packages...</p>;
+    if (error) return <p>Error fetching packages!</p>;
+    
     return (
         <div>
             <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
