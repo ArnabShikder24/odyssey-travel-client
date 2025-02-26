@@ -15,4 +15,5 @@ export const pathname = {
   forgotPassword: "/forgot-password",
   profile: "/profile",
   booking: "/booking",
+  dashboardMain: "/dashboard/main"
 }
