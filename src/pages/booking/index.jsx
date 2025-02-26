@@ -220,9 +220,11 @@ const Booking = () => {
                                 <option value="" disabled selected>
                                   Choose a hotel
                                 </option>
-                                <option value="1">Hotel A</option>
-                                <option value="2">Hotel B</option>
-                                <option value="3">Hotel C</option>
+                                {allHotel.map((hotel) => (
+                                <option key={hotel.id} value={hotel.id}>
+                                  {hotel?.hotel_name}
+                                </option>
+                                ))}
                               </select>
                               <br />
                               <p className="text-sm text-red-500">
