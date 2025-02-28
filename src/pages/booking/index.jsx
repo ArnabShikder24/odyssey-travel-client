@@ -27,7 +27,6 @@ const Booking = () => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
         const email = currentUser.email;
-        console.log(email);
         setEmail(email)
       }
       setLoading(false);
