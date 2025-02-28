@@ -1,5 +1,7 @@
 import RootLayout from '@/components/RootLayout';
+import { auth } from '@/lib/firebase';
 import { pathname } from '@/routes/routes.index';
+import { onAuthStateChanged } from 'firebase/auth';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams, useSearchParams } from 'next/navigation';
@@ -7,6 +9,7 @@ import { useRouter } from 'next/router';
 import React, { use, useEffect, useState } from 'react';
 
 const Booking = () => {
+  const [email, setEmail] = useState('');
   const [allFlight, setAllFlight] = useState([]);
   const [allHotel, setAllHotel] = useState([]);
   const [allGuides, setAllGuides] = useState([]);
@@ -19,6 +22,19 @@ const Booking = () => {
   const searchParams = useSearchParams();
   const packageId = searchParams.get('package_id');
   const router = useRouter();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (currentUser) {
+        const email = currentUser.email;
+        console.log(email);
+        setEmail(email)
+      }
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
   
   useEffect(() => {
     setLoading(true);
@@ -460,7 +476,9 @@ const Booking = () => {
                             parseFloat(selectedGuide?.price || 0)
                           ),
                           package_id: packageId,
-                          payment_date: new Date().toISOString()
+                          email: email,
+                          payment_date: new Date().toISOString(),
+                          status: 'paid',
                         };
 
                         console.log(paymentData);
