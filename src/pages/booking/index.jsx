@@ -140,7 +140,7 @@ const Booking = () => {
                     >
                       <option value="" disabled selected>Choose a flight</option>
                       {allFlight?.map((flight) => (
-                        <option key={flight.id} value={flight.id}> {console.log(flight)}
+                        <option key={flight.id} value={flight.id}>
                           {flight?.flight_number} - ${flight?.price} /one way per person
                         </option>
                       ))}
@@ -253,12 +253,20 @@ const Booking = () => {
                                 **Hotel and room prices may vary; they will be
                                 adjusted accordingly.
                               </p>
-                              <button
-                                onClick={() => setPage(3)}
-                                className="mt-5 inline-flex items-center justify-center rounded-md border-2 border-transparent bg-green-500 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
-                              >
-                                Proceed to select Guide
-                              </button>
+                              <div className="flex items-center gap-4 mt-5">
+                                <button
+                                  onClick={() => setPage(1)}
+                                  className="bg-green-500 bg-none px-5 py-4 rounded-md text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
+                                >
+                                  Back
+                                </button>
+                                <button
+                                  onClick={() => setPage(3)}
+                                  className="nline-flex items-center justify-center rounded-md border-2 border-transparent bg-green-500 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
+                                >
+                                  Proceed to select Guide
+                                </button>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -319,12 +327,20 @@ const Booking = () => {
                                 ))}
                               </select>
                               <br />
-                              <button
-                                onClick={() => setPage(4)}
-                                className="mt-5 inline-flex items-center justify-center rounded-md border-2 border-transparent bg-green-500 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
-                              >
-                                Procced to Payment
-                              </button>
+                              <div className="flex items-center gap-4 mt-5">
+                                <button
+                                  onClick={() => setPage(2)}
+                                  className="bg-green-500 bg-none px-5 py-4 rounded-md text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
+                                >
+                                  Back
+                                </button>
+                                <button
+                                  onClick={() => setPage(4)}
+                                  className="nline-flex items-center justify-center rounded-md border-2 border-transparent bg-green-500 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
+                                >
+                                  Procced to Payment
+                                </button>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -339,7 +355,6 @@ const Booking = () => {
                     src="https://images.unsplash.com/photo-1530107973768-581951e62d34?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt=""
                     className="object-cover w-full h-full rounded"
-                    s
                   />
                 </div>
               </div>
@@ -446,6 +461,12 @@ const Booking = () => {
                 >
                   Pay later
                 </button> */}
+                <button
+                  onClick={() => setPage(3)}
+                  className="bg-green-500 bg-none px-5 py-4 rounded-md text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
+                >
+                  Back
+                </button>
                 <Link
                   href={pathname.confirmed}
                   className="px-6 py-3.5 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700"
