@@ -3,16 +3,22 @@ import { pathname } from '@/routes/routes.index';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/router';
 import React, { use, useEffect, useState } from 'react';
 
 const Booking = () => {
   const [allFlight, setAllFlight] = useState([]);
   const [allHotel, setAllHotel] = useState([]);
   const [allGuides, setAllGuides] = useState([]);
+  const [selectedFlight, setSelectedFlight] = useState(null);
+  const [selectedHotel, setSelectedHotel] = useState(null);
+  const [selectedGuide, setSelectedGuide] = useState(null);
+  const [isProcessing, setIsProcessing] = useState(false);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams();
   const packageId = searchParams.get('package_id');
+  const router = useRouter();
   
   useEffect(() => {
     setLoading(true);
@@ -136,11 +142,14 @@ const Booking = () => {
                     <div className='my-5'>
                     <select 
                       className="w-full p-2.5 text-gray-700 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-green-500"
-                      onChange={(e) => console.log(e.target.value)}
+                      onChange={(e) => {
+                        const flight = allFlight.find(f => f.flight_id == e.target.value);
+                        setSelectedFlight(flight || null);
+                      }}
                     >
                       <option value="" disabled selected>Choose a flight</option>
                       {allFlight?.map((flight) => (
-                        <option key={flight.id} value={flight.id}>
+                        <option key={flight.flight_id} value={flight.flight_id}>
                           {flight?.flight_number} - ${flight?.price} /one way per person
                         </option>
                       ))}
@@ -234,13 +243,16 @@ const Booking = () => {
                               </h3>
                               <select
                                 className="w-full p-2.5 text-gray-700 mb-5 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-green-500"
-                                onChange={(e) => console.log(e.target.value)}
+                                onChange={(e) => {
+                                  const hotel = allHotel.find(h => h.hotel_id == e.target.value);
+                                  setSelectedHotel(hotel || null);
+                                }}
                               >
                                 <option value="" disabled selected>
                                   Choose a hotel
                                 </option>
                                 {allHotel?.map((hotel) => (
-                                <option key={hotel.id} value={hotel.id}>
+                                  <option key={hotel.hotel_id} value={hotel.hotel_id}>
                                   {hotel?.hotel_name} - {"Rating " + hotel?.rating} - {"Price $" + hotel?.price_per_night} /one day
                                 </option>
                                 ))}
@@ -315,13 +327,16 @@ const Booking = () => {
                               </h3>
                               <select
                                 className="w-full p-2.5 text-gray-700 mb-5 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-green-500"
-                                onChange={(e) => console.log(e.target.value)}
+                                onChange={(e) => {
+                                  const guide = allGuides.find(g => g.guide_id == e.target.value);
+                                  setSelectedGuide(guide || null);
+                                }}
                               >
                                 <option value="" disabled selected>
                                   Choose a guide
                                 </option>
                                 {allGuides?.map((guide) => (
-                                  <option key={guide.id} value={guide.id}>
+                                  <option key={guide.guide_id} value={guide.guide_id}>
                                     {guide?.name} - {"Rating " + guide?.rating} - {"Price $" + guide?.price}
                                 </option>
                                 ))}
@@ -365,118 +380,121 @@ const Booking = () => {
       {
         page === 4 && (
           <div className="bg-green-100 p-4 h-screen pt-32">
-          <div className="bg-white p-12 rounded-lg max-w-4xl mx-auto">
-            <div className="text-center">
-              <h2 className="text-3xl font-extrabold text-blue-500 inline-block border-b-4 border-blue-500 pb-1">
-                Checkout
-              </h2>
-            </div>
-            <div className="mt-12">
-              <div className="grid md:grid-cols-3 gap-6 mt-12">
-                <div>
-                  <h3 className="text-xl font-bold text-green-500">
-                    Payment method
-                  </h3>
-                </div>
-                <div className="md:col-span-2">
-                  <div className="grid gap-6 sm:grid-cols-2">
-                    <div className="flex items-center">
-                      <input
-                        type="radio"
-                        className="w-5 h-5 cursor-pointer"
-                        id="card"
-                      />
-                      <label
-                        for="card"
-                        className="ml-4 flex gap-2 cursor-pointer"
-                      >
-                        <Image
-                          height={100}
-                          width={100}
-                          src="https://readymadeui.com/images/visa.webp"
-                          className="w-12"
-                          alt="card1"
-                        />
-                        <Image
-                          height={100}
-                          width={100}
-                          src="https://readymadeui.com/images/american-express.webp"
-                          className="w-12"
-                          alt="card2"
-                        />
-                        <Image
-                          height={100}
-                          width={100}
-                          src="https://readymadeui.com/images/master.webp"
-                          className="w-12"
-                          alt="card3"
-                        />
-                      </label>
-                    </div>
-                    <div className="flex items-center">
-                      <input
-                        type="radio"
-                        className="w-5 h-5 cursor-pointer"
-                        id="paypal"
-                      />
-                      <label
-                        for="paypal"
-                        className="ml-4 flex gap-2 cursor-pointer"
-                      >
-                        <Image
-                          height={100}
-                          width={100}
-                          src="https://readymadeui.com/images/paypal.webp"
-                          className="w-20"
-                          alt="paypalCard"
-                        />
-                      </label>
-                    </div>
-                  </div>
-                  <div className="grid sm:grid-cols-4 gap-6 mt-6">
-                    <div className="col-span-2">
-                      <input
-                        type="number"
-                        placeholder="Card number"
-                        className="px-4 py-3.5 bg-white text-[#333] w-full text-sm border-2 rounded-md focus:border-blue-500 outline-none"
-                      />
-                    </div>
-                    <input
-                      type="number"
-                      placeholder="EXP."
-                      className="px-4 py-3.5 bg-white text-[#333] w-full text-sm border-2 rounded-md focus:border-blue-500 outline-none"
-                    />
-                    <input
-                      type="number"
-                      placeholder="CVV"
-                      className="px-4 py-3.5 bg-white text-[#333] w-full text-sm border-2 rounded-md focus:border-blue-500 outline-none"
-                    />
-                  </div>
-                </div>
+            <div className="bg-white p-12 rounded-lg max-w-4xl mx-auto">
+              <div className="text-center">
+                <h2 className="text-3xl font-extrabold text-blue-500 inline-block border-b-4 border-blue-500 pb-1">
+                  Checkout
+                </h2>
               </div>
-              <div className="flex flex-wrap justify-end gap-4 mt-12">
-                {/* <button
-                  type="button"
-                  className="px-6 py-3.5 text-sm bg-transparent border-2 text-[#333] rounded-md hover:bg-gray-100"
-                >
-                  Pay later
-                </button> */}
-                <button
-                  onClick={() => setPage(3)}
-                  className="bg-green-500 bg-none px-5 py-4 rounded-md text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
-                >
-                  Back
-                </button>
-                <Link
-                  href={pathname.confirmed}
-                  className="px-6 py-3.5 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700"
-                >
-                  Pay now
-                </Link>
+              <div className="mt-12">
+                {/* Payment Summary */}
+                <div className="mb-8">
+                  <h3 className="text-xl font-bold text-green-500 mb-4">Order Summary</h3>
+                  <div className="border-t pt-4">
+                    {selectedFlight ? (
+                      <div className="flex justify-between mb-2">
+                        <span>Flight ({selectedFlight.flight_number})</span>
+                        <span>${selectedFlight.price}</span>
+                      </div>
+                    ) : (
+                      <div className="text-gray-500 mb-2">No flight selected</div>
+                    )}
+                    {selectedHotel ? (
+                      <div className="flex justify-between mb-2">
+                        <span>Hotel ({selectedHotel.hotel_name})</span>
+                        <span>${selectedHotel.price_per_night}</span>
+                      </div>
+                    ) : (
+                      <div className="text-gray-500 mb-2">No hotel selected</div>
+                    )}
+                    {selectedGuide ? (
+                      <div className="flex justify-between mb-2">
+                        <span>Guide ({selectedGuide.name})</span>
+                        <span>${selectedGuide.price}</span>
+                      </div>
+                    ) : (
+                      <div className="text-gray-500 mb-2">No guide selected</div>
+                    )}
+                    <div className="flex justify-between font-bold border-t pt-2">
+                      <span>Subtotal</span>
+                      <span>
+                        ${(
+                          parseFloat(selectedFlight?.price || 0) +
+                          parseFloat(selectedHotel?.price_per_night || 0) +
+                          parseFloat(selectedGuide?.price || 0)
+                        )}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-6 mt-12">
+                  <div>
+                    <h3 className="text-xl font-bold text-green-500">
+                      Payment method
+                    </h3>
+                  </div>
+                  <div className="md:col-span-2">
+                    {/* ... payment method selection ... */}
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap justify-end gap-4 mt-12">
+                  <button
+                    onClick={() => setPage(3)}
+                    className="bg-green-500 bg-none px-5 py-4 rounded-md text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
+                  >
+                    Back
+                  </button>
+                  <button
+                    onClick={async () => {
+                      setIsProcessing(true);
+                      try {
+                        const paymentData = {
+                          flight_id: selectedFlight?.flight_id || null,
+                          hotel_id: selectedHotel?.hotel_id || null,
+                          guide_id: selectedGuide?.guide_id || null,
+                          subtotal: (
+                            parseFloat(selectedFlight?.price || 0) +
+                            parseFloat(selectedHotel?.price_per_night || 0) +
+                            parseFloat(selectedGuide?.price || 0)
+                          ),
+                          package_id: packageId,
+                          payment_date: new Date().toISOString()
+                        };
+
+                        console.log(paymentData);
+
+                        // const response = await fetch('http://localhost:8000/api/bookings', {
+                        //   method: 'POST',
+                        //   headers: {
+                        //     'Content-Type': 'application/json',
+                        //   },
+                        //   body: JSON.stringify(paymentData),
+                        // });
+
+                        // if (response.ok) {
+                        //   window.location.href = pathname.confirmed;
+                        // } else {
+                        //   console.error('Payment failed');
+                        // }
+                      } catch (error) {
+                        console.error('Error processing payment:', error);
+                      } finally {
+                        setIsProcessing(false);
+                      }
+                    }}
+                    disabled={isProcessing}
+                    className={`px-6 py-3.5 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 ${
+                      isProcessing ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}
+                  >
+                    {isProcessing ? 'Processing...' : 'Pay now'}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
         )
       }
     </div>
