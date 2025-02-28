@@ -5,7 +5,7 @@ import React from "react";
 
 const Payment = () => {
   return (
-    <di>
+    <div>
       <div className="bg-green-100 p-4 h-screen">
         <div className="bg-white p-12 rounded-lg max-w-4xl mx-auto">
           <div className="text-center">
@@ -14,72 +14,6 @@ const Payment = () => {
             </h2>
           </div>
           <div className="mt-12">
-            <div className="grid md:grid-cols-3 gap-6">
-              <div>
-                <h3 className="text-xl font-bold text-green-500">
-                  Personal Details
-                </h3>
-              </div>
-              <div className="md:col-span-2">
-                <form>
-                  <div className="grid sm:grid-cols-2 gap-5">
-                    <input
-                      type="text"
-                      placeholder="First name"
-                      className="px-4 py-3.5 bg-white text-[#333] w-full text-sm border-2 rounded-md focus:border-blue-500 outline-none"
-                    />
-                    <input
-                      type="text"
-                      placeholder="Last name"
-                      className="px-4 py-3.5 bg-white text-[#333] w-full text-sm border-2 rounded-md focus:border-blue-500 outline-none"
-                    />
-                    <input
-                      type="email"
-                      placeholder="Email address"
-                      className="px-4 py-3.5 bg-white text-[#333] w-full text-sm border-2 rounded-md focus:border-blue-500 outline-none"
-                    />
-                    <input
-                      type="number"
-                      placeholder="Phone number"
-                      className="px-4 py-3.5 bg-white text-[#333] w-full text-sm border-2 rounded-md focus:border-blue-500 outline-none"
-                    />
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6 mt-12">
-              <div>
-                <h3 className="text-xl font-bold text-green-500">
-                  Shopping Address
-                </h3>
-              </div>
-              <div className="md:col-span-2">
-                <form>
-                  <div className="grid sm:grid-cols-2 gap-5">
-                    <input
-                      type="text"
-                      placeholder="Street address"
-                      className="px-4 py-3.5 bg-white text-[#333] w-full text-sm border-2 rounded-md focus:border-blue-500 outline-none"
-                    />
-                    <input
-                      type="text"
-                      placeholder="City"
-                      className="px-4 py-3.5 bg-white text-[#333] w-full text-sm border-2 rounded-md focus:border-blue-500 outline-none"
-                    />
-                    <input
-                      type="text"
-                      placeholder="State"
-                      className="px-4 py-3.5 bg-white text-[#333] w-full text-sm border-2 rounded-md focus:border-blue-500 outline-none"
-                    />
-                    <input
-                      type="number"
-                      placeholder="Zip Code"
-                      className="px-4 py-3.5 bg-white text-[#333] w-full text-sm border-2 rounded-md focus:border-blue-500 outline-none"
-                    />
-                  </div>
-                </form>
-              </div>
-            </div>
             <div className="grid md:grid-cols-3 gap-6 mt-12">
               <div>
                 <h3 className="text-xl font-bold text-green-500">
@@ -163,12 +97,12 @@ const Payment = () => {
               </div>
             </div>
             <div className="flex flex-wrap justify-end gap-4 mt-12">
-              <button
+              {/* <button
                 type="button"
                 className="px-6 py-3.5 text-sm bg-transparent border-2 text-[#333] rounded-md hover:bg-gray-100"
               >
                 Pay later
-              </button>
+              </button> */}
               <Link
                 href={pathname.confirmed}
                 className="px-6 py-3.5 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700"
@@ -179,7 +113,7 @@ const Payment = () => {
           </div>
         </div>
       </div>
-    </di>
+    </div>
   );
 };
 

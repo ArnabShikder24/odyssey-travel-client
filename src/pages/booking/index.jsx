@@ -21,8 +21,10 @@ const Booking = () => {
         const response = await fetch(`http://localhost:8000/api/flights/package/${packageId}`);
         const data = await response.json();
         setAllFlight(data);
+        if(data?.message) setAllFlight([]);
         setLoading(false);
       } catch (error) {
+        setAllFlight([]);
         console.error(error);
         setLoading(false);
       }
@@ -32,8 +34,10 @@ const Booking = () => {
         const response = await fetch(`http://localhost:8000/api/hotels/package/${packageId}`);
         const data = await response.json();
         setAllHotel(data);
+        if(data?.message) setAllHotel([]);
         setLoading(false);
       } catch (error) {
+        setAllHotel([]);
         console.error(error);
         setLoading(false);
       }
@@ -43,12 +47,15 @@ const Booking = () => {
         const response = await fetch(`http://localhost:8000/api/tour-guide/package/${packageId}`);
         const data = await response.json();
         setAllGuides(data);
+        if(data?.message) setAllGuides([]);
         setLoading(false);
       } catch (error) {
+        setAllGuides([]);
         console.error(error);
         setLoading(false);
       }
     };
+    setLoading(false)
     if (packageId) {
       if (page === 1) fetchFlightsData();
       if (page === 2) fetchHotelsData();
@@ -132,7 +139,7 @@ const Booking = () => {
                       onChange={(e) => console.log(e.target.value)}
                     >
                       <option value="" disabled selected>Choose a flight</option>
-                      {allFlight.map((flight) => (
+                      {allFlight?.map((flight) => (
                         <option key={flight.id} value={flight.id}> {console.log(flight)}
                           {flight?.flight_number} - ${flight?.price} /one way per person
                         </option>
@@ -232,7 +239,7 @@ const Booking = () => {
                                 <option value="" disabled selected>
                                   Choose a hotel
                                 </option>
-                                {allHotel.map((hotel) => (
+                                {allHotel?.map((hotel) => (
                                 <option key={hotel.id} value={hotel.id}>
                                   {hotel?.hotel_name} - {"Rating " + hotel?.rating} - {"Price $" + hotel?.price_per_night} /one day
                                 </option>
@@ -305,7 +312,7 @@ const Booking = () => {
                                 <option value="" disabled selected>
                                   Choose a guide
                                 </option>
-                                {allGuides.map((guide) => (
+                                {allGuides?.map((guide) => (
                                   <option key={guide.id} value={guide.id}>
                                     {guide?.name} - {"Rating " + guide?.rating} - {"Price $" + guide?.price}
                                 </option>
@@ -313,7 +320,7 @@ const Booking = () => {
                               </select>
                               <br />
                               <button
-                                onClick={() => setPage(3)}
+                                onClick={() => setPage(4)}
                                 className="mt-5 inline-flex items-center justify-center rounded-md border-2 border-transparent bg-green-500 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
                               >
                                 Procced to Payment
@@ -338,6 +345,117 @@ const Booking = () => {
               </div>
             </div>
           </section>
+        )
+      }
+      {
+        page === 4 && (
+          <div className="bg-green-100 p-4 h-screen pt-32">
+          <div className="bg-white p-12 rounded-lg max-w-4xl mx-auto">
+            <div className="text-center">
+              <h2 className="text-3xl font-extrabold text-blue-500 inline-block border-b-4 border-blue-500 pb-1">
+                Checkout
+              </h2>
+            </div>
+            <div className="mt-12">
+              <div className="grid md:grid-cols-3 gap-6 mt-12">
+                <div>
+                  <h3 className="text-xl font-bold text-green-500">
+                    Payment method
+                  </h3>
+                </div>
+                <div className="md:col-span-2">
+                  <div className="grid gap-6 sm:grid-cols-2">
+                    <div className="flex items-center">
+                      <input
+                        type="radio"
+                        className="w-5 h-5 cursor-pointer"
+                        id="card"
+                      />
+                      <label
+                        for="card"
+                        className="ml-4 flex gap-2 cursor-pointer"
+                      >
+                        <Image
+                          height={100}
+                          width={100}
+                          src="https://readymadeui.com/images/visa.webp"
+                          className="w-12"
+                          alt="card1"
+                        />
+                        <Image
+                          height={100}
+                          width={100}
+                          src="https://readymadeui.com/images/american-express.webp"
+                          className="w-12"
+                          alt="card2"
+                        />
+                        <Image
+                          height={100}
+                          width={100}
+                          src="https://readymadeui.com/images/master.webp"
+                          className="w-12"
+                          alt="card3"
+                        />
+                      </label>
+                    </div>
+                    <div className="flex items-center">
+                      <input
+                        type="radio"
+                        className="w-5 h-5 cursor-pointer"
+                        id="paypal"
+                      />
+                      <label
+                        for="paypal"
+                        className="ml-4 flex gap-2 cursor-pointer"
+                      >
+                        <Image
+                          height={100}
+                          width={100}
+                          src="https://readymadeui.com/images/paypal.webp"
+                          className="w-20"
+                          alt="paypalCard"
+                        />
+                      </label>
+                    </div>
+                  </div>
+                  <div className="grid sm:grid-cols-4 gap-6 mt-6">
+                    <div className="col-span-2">
+                      <input
+                        type="number"
+                        placeholder="Card number"
+                        className="px-4 py-3.5 bg-white text-[#333] w-full text-sm border-2 rounded-md focus:border-blue-500 outline-none"
+                      />
+                    </div>
+                    <input
+                      type="number"
+                      placeholder="EXP."
+                      className="px-4 py-3.5 bg-white text-[#333] w-full text-sm border-2 rounded-md focus:border-blue-500 outline-none"
+                    />
+                    <input
+                      type="number"
+                      placeholder="CVV"
+                      className="px-4 py-3.5 bg-white text-[#333] w-full text-sm border-2 rounded-md focus:border-blue-500 outline-none"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-wrap justify-end gap-4 mt-12">
+                {/* <button
+                  type="button"
+                  className="px-6 py-3.5 text-sm bg-transparent border-2 text-[#333] rounded-md hover:bg-gray-100"
+                >
+                  Pay later
+                </button> */}
+                <Link
+                  href={pathname.confirmed}
+                  className="px-6 py-3.5 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                >
+                  Pay now
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
         )
       }
     </div>
