@@ -6,7 +6,6 @@ import axios from "axios";
 import { onAuthStateChanged } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
-// import { Search } from "lucide-react";
 import { CiSearch } from "react-icons/ci";
 
 const Tourplan = () => {
@@ -79,7 +78,6 @@ const Tourplan = () => {
               placeholder="Search packages by name or description..."
               className="w-full py-3 px-12 border border-green-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500"
             />
-            {/* <Search className="absolute left-4 top-3.5 text-green-500" size={20} /> */}
             <CiSearch className="absolute left-4 top-3.5 text-green-500" size={20} />
             {searchTerm && (
               <button 
