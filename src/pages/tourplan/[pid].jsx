@@ -222,11 +222,10 @@ const CardDetails = () => {
               <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
                 <div className="flex items-end">
                   <h1 className="text-3xl font-bold">${product.price}</h1>
-                  <span className="text-base">/person</span>
                 </div>
 
                 <Link
-                  href={pathname.hotel}
+                  href={pathname.booking + `?package_id=${pid}`}
                   className="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-green-500 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
                 >
                   <svg

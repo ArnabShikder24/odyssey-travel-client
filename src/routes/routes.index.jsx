@@ -4,6 +4,7 @@ export const pathname = {
   contact: "/contact",
   developer: "/team",
   tourPlan: "/tourplan",
+  booked: "/booked",
   cardDetails: "/cardDetails",
   cart: "/cart",
   hotel: "/hotel",
@@ -14,5 +15,6 @@ export const pathname = {
   signup: "/signup",
   forgotPassword: "/forgot-password",
   profile: "/profile",
+  booking: "/booking",
   dashboardMain: "/dashboard/main"
 }

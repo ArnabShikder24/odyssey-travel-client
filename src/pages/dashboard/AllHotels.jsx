@@ -64,16 +64,18 @@ export default function AllHotels() {
                       <th className="px-6 pb-3 text-lg text-purple-600">Location</th>
                       <th className="px-6 pb-3 text-lg text-purple-600">Price Per Night</th>
                       <th className="px-6 pb-3 text-lg text-purple-600">Rating</th>
+                      <th className="px-6 pb-3 text-lg text-purple-600">Package Id</th>
                     </tr>
                   </thead>
                   <tbody>
                     {products?.map((product) => (
                       <tr key={product.hotel_id} className="text-sm border border-red-300">
-                        <td className="px-6 py-5 font-medium">{product.hotel_id}</td>
-                        <td className="px-6 py-5 font-medium">{product.hotel_name}</td>
-                        <td className="px-6 py-5 font-medium">{product.location.slice(0, 10)}</td>
-                        <td className="px-6 py-5 font-medium">{product.price_per_night}</td>
-                        <td className="px-6 py-5 font-medium">{product.rating}</td>
+                        <td className="px-6 py-5 font-medium">{product?.hotel_id}</td>
+                        <td className="px-6 py-5 font-medium">{product?.hotel_name}</td>
+                        <td className="px-6 py-5 font-medium">{product?.location.slice(0, 10)}</td>
+                        <td className="px-6 py-5 font-medium">{product?.price_per_night}</td>
+                        <td className="px-6 py-5 font-medium">{product?.rating}</td>
+                        <td className="px-6 py-5 font-medium">{product?.package_id}</td>
                         <td className="flex items-center px-6 py-5 ">
                           <button
                         type="button"

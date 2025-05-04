@@ -66,6 +66,7 @@ export default function AllPackages() {
                       <th className="px-6 pb-3 text-lg text-purple-600">name</th>
                       <th className="px-6 pb-3 text-lg text-purple-600">details</th>
                       <th className="px-6 pb-3 text-lg text-purple-600">price</th>
+                      <th className="px-6 pb-3 text-lg text-purple-600">action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -86,13 +87,13 @@ export default function AllPackages() {
                           >
                             Update
                           </button>
-                          <button
+                          {/* <button
                         type="button"
                         onClick={() => handleDelete(product.package_id)}
                             className="text-red-700 bg-white hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
                           >
                             Delete
-                          </button>
+                          </button> */}
                         </td>
                       </tr>
                     ))}

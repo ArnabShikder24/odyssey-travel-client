@@ -8,7 +8,6 @@ import { pathname } from "@/routes/routes.index";
 export default function Navbar() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  console.log(user);
   const router = useRouter();
   const currentRouter = router.pathname;
 
@@ -21,7 +20,6 @@ export default function Navbar() {
     return () => unsubscribe();
   }, []);
 
-  console.log(currentRouter);
   return (
     <header className="header">
       <h2 className="logo">Odyssey</h2>
@@ -38,6 +36,7 @@ export default function Navbar() {
             <>
               {user ? (
             <>
+              <Link className={`${currentRouter !== pathname.home ? `${currentRouter === pathname.booked ? "text-white" : "text-gray-500"}` : "text-green-200"} py-1.5 px-4 rounded-full mx-2 font-medium hover:bg-[#359381] hover:text-white ${currentRouter === pathname.booked && "bg-[#359381]"} active:text-white`} href={pathname.booked}>Booked</Link>
               <Link className={`${currentRouter !== pathname.home ? `${currentRouter === pathname.profile ? "text-white" : "text-gray-500"}` : "text-green-200"} py-1.5 px-4 rounded-full mx-2 font-medium hover:bg-[#359381] hover:text-white ${currentRouter === pathname.profile && "bg-[#359381]"} active:text-white`} href={pathname.profile}>Profile</Link>
             </>
           ) : (
