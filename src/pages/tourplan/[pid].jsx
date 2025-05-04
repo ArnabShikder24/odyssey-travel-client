@@ -222,7 +222,6 @@ const CardDetails = () => {
               <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
                 <div className="flex items-end">
                   <h1 className="text-3xl font-bold">${product.price}</h1>
-                  <span className="text-base">/person</span>
                 </div>
 
                 <Link

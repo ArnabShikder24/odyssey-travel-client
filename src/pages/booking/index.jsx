@@ -14,6 +14,7 @@ const Booking = () => {
   const [allFlight, setAllFlight] = useState([]);
   const [allHotel, setAllHotel] = useState([]);
   const [allGuides, setAllGuides] = useState([]);
+  const [slectedPackage, setSelectedPackage] = useState(null);
   const [selectedFlight, setSelectedFlight] = useState(null);
   const [selectedHotel, setSelectedHotel] = useState(null);
   const [selectedGuide, setSelectedGuide] = useState(null);
@@ -38,6 +39,19 @@ const Booking = () => {
   
   useEffect(() => {
     setLoading(true);
+    const fetchPackageData = async () => {
+      try {
+        const response = await fetch(`http://localhost:8000/api/package?package_id=${packageId}`);
+        const data = await response.json();
+        setSelectedPackage(data?.data);
+        setLoading(false);
+      } catch (error) {
+        setSelectedPackage([]);
+        console.error(error);
+        setLoading(false);
+      }
+    };
+    
     const fetchFlightsData = async () => {
       try {
         const response = await fetch(`http://localhost:8000/api/flights/package/${packageId}`);
@@ -79,6 +93,7 @@ const Booking = () => {
     };
     setLoading(false)
     if (packageId) {
+      fetchPackageData();
       if (page === 1) fetchFlightsData();
       if (page === 2) fetchHotelsData();
       if (page === 3) fetchGuidesData()
@@ -88,7 +103,6 @@ const Booking = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  
   return (
     <div>
       {
@@ -411,10 +425,18 @@ const Booking = () => {
                 <div className="mb-8">
                   <h3 className="text-xl font-bold text-green-500 mb-4">Order Summary</h3>
                   <div className="border-t pt-4">
+                    {slectedPackage ? (
+                      <div className="flex justify-between mb-2">
+                        <span>Package ({slectedPackage?.name})</span>
+                        <span>${slectedPackage?.price}</span>
+                      </div>
+                    ) : (
+                      <div className="text-gray-500 mb-2">No flight selected</div>
+                    )}
                     {selectedFlight ? (
                       <div className="flex justify-between mb-2">
                         <span>Flight ({selectedFlight?.flight_number})</span>
-                        <span>${selectedFlight.price} X {parseInt(person)} = ${selectedFlight?.price * parseInt(person)}</span>
+                        <span>${selectedFlight?.price} X {parseInt(person)} = ${selectedFlight?.price * parseInt(person)}</span>
                       </div>
                     ) : (
                       <div className="text-gray-500 mb-2">No flight selected</div>
@@ -439,6 +461,7 @@ const Booking = () => {
                       <span>Subtotal</span>
                       <span>
                         ${(
+                          parseFloat(slectedPackage?.price || 0) +
                           parseFloat(selectedFlight?.price * parseInt(person) || 0) +
                           parseFloat(selectedHotel?.price_per_night || 0) +
                           parseFloat(selectedGuide?.price || 0)
@@ -476,6 +499,7 @@ const Booking = () => {
                           guide_id: selectedGuide?.guide_id || null,
                           person: parseInt(person) || 1,
                           subtotal: (
+                            parseFloat(slectedPackage?.price || 0) +
                             parseFloat(selectedFlight?.price * parseInt(person) || 0) +
                             parseFloat(selectedHotel?.price_per_night || 0) +
                             parseFloat(selectedGuide?.price || 0)
