@@ -10,6 +10,7 @@ import React, { use, useEffect, useState } from 'react';
 
 const Booking = () => {
   const [email, setEmail] = useState('');
+  const [person, setPerson] = useState(1);
   const [allFlight, setAllFlight] = useState([]);
   const [allHotel, setAllHotel] = useState([]);
   const [allGuides, setAllGuides] = useState([]);
@@ -117,6 +118,10 @@ const Booking = () => {
                         </h3>
                         <div className="flex gap-4 mt-4">
                           <div>
+                            <div className="mb-5">
+                              <p className="mb-2">Total Person:</p>
+                              <input type="number" defaultValue="1" onChange={(e) => setPerson(e.target.value)} />
+                            </div>
                             <div className="flex flex-wrap">
                               <div className="flex items-center me-4">
                                 <input
@@ -408,24 +413,24 @@ const Booking = () => {
                   <div className="border-t pt-4">
                     {selectedFlight ? (
                       <div className="flex justify-between mb-2">
-                        <span>Flight ({selectedFlight.flight_number})</span>
-                        <span>${selectedFlight.price}</span>
+                        <span>Flight ({selectedFlight?.flight_number})</span>
+                        <span>${selectedFlight.price} X {parseInt(person)} = ${selectedFlight?.price * parseInt(person)}</span>
                       </div>
                     ) : (
                       <div className="text-gray-500 mb-2">No flight selected</div>
                     )}
                     {selectedHotel ? (
                       <div className="flex justify-between mb-2">
-                        <span>Hotel ({selectedHotel.hotel_name})</span>
-                        <span>${selectedHotel.price_per_night}</span>
+                        <span>Hotel ({selectedHotel?.hotel_name})</span>
+                        <span>${selectedHotel?.price_per_night}</span>
                       </div>
                     ) : (
                       <div className="text-gray-500 mb-2">No hotel selected</div>
                     )}
                     {selectedGuide ? (
                       <div className="flex justify-between mb-2">
-                        <span>Guide ({selectedGuide.name})</span>
-                        <span>${selectedGuide.price}</span>
+                        <span>Guide ({selectedGuide?.name})</span>
+                        <span>${selectedGuide?.price}</span>
                       </div>
                     ) : (
                       <div className="text-gray-500 mb-2">No guide selected</div>
@@ -434,7 +439,7 @@ const Booking = () => {
                       <span>Subtotal</span>
                       <span>
                         ${(
-                          parseFloat(selectedFlight?.price || 0) +
+                          parseFloat(selectedFlight?.price * parseInt(person) || 0) +
                           parseFloat(selectedHotel?.price_per_night || 0) +
                           parseFloat(selectedGuide?.price || 0)
                         )}
@@ -465,22 +470,23 @@ const Booking = () => {
                     onClick={async () => {
                       setIsProcessing(true);
                       try {
-                        const paymentData = {
+                        const bookingData = {
                           flight_id: selectedFlight?.flight_id || null,
                           hotel_id: selectedHotel?.hotel_id || null,
                           guide_id: selectedGuide?.guide_id || null,
+                          person: parseInt(person) || 1,
                           subtotal: (
-                            parseFloat(selectedFlight?.price || 0) +
+                            parseFloat(selectedFlight?.price * parseInt(person) || 0) +
                             parseFloat(selectedHotel?.price_per_night || 0) +
                             parseFloat(selectedGuide?.price || 0)
                           ),
-                          package_id: packageId,
+                          package_id: parseInt(packageId),
                           email: email,
                           payment_date: new Date().toISOString(),
                           status: 'paid',
                         };
 
-                        console.log(paymentData);
+                        console.log(bookingData);
 
                         // const response = await fetch('http://localhost:8000/api/bookings', {
                         //   method: 'POST',
@@ -495,6 +501,7 @@ const Booking = () => {
                         // } else {
                         //   console.error('Payment failed');
                         // }
+                        // window.location.href = pathname.confirmed;
                       } catch (error) {
                         console.error('Error processing payment:', error);
                       } finally {
