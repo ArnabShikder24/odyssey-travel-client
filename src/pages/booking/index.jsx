@@ -531,20 +531,19 @@ const Booking = () => {
 
                         console.log(bookingData);
 
-                        // const response = await fetch('http://localhost:8000/api/bookings', {
-                        //   method: 'POST',
-                        //   headers: {
-                        //     'Content-Type': 'application/json',
-                        //   },
-                        //   body: JSON.stringify(paymentData),
-                        // });
-
-                        // if (response.ok) {
-                        //   window.location.href = pathname.confirmed;
-                        // } else {
-                        //   console.error('Payment failed');
-                        // }
-                        // window.location.href = pathname.confirmed;
+                        const response = await fetch('http://localhost:8000/api/booking/create', {
+                          method: 'POST',
+                          headers: {
+                            'Content-Type': 'application/json',
+                          },
+                          body: JSON.stringify(bookingData),
+                        });
+                        
+                        if (response.ok) {
+                          window.location.href = pathname.confirmed;
+                        } else {
+                          console.error('Payment failed');
+                        }
                       } catch (error) {
                         console.error('Error processing payment:', error);
                       } finally {
