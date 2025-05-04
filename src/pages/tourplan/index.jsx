@@ -93,7 +93,7 @@ const Tourplan = () => {
                   />
                 </div>
                 <div>
-                  <span className="text-sm text-slate-600">${product.price * 2}</span>
+                  <span className="text-sm text-slate-600">${(product.price * 2).toFixed(2)}</span>
                 </div>
               </div>
 
@@ -107,7 +107,7 @@ const Tourplan = () => {
                   />
                 </div>
                 <div>
-                  <span className="text-sm text-slate-600">${product.price * 3}</span>
+                  <span className="text-sm text-slate-600">${(product.price * 3)?.toFixed(2)}</span>
                 </div>
               </div>
             </div>
