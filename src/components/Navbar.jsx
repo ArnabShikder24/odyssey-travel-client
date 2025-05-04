@@ -36,6 +36,7 @@ export default function Navbar() {
             <>
               {user ? (
             <>
+              <Link className={`${currentRouter !== pathname.home ? `${currentRouter === pathname.booked ? "text-white" : "text-gray-500"}` : "text-green-200"} py-1.5 px-4 rounded-full mx-2 font-medium hover:bg-[#359381] hover:text-white ${currentRouter === pathname.booked && "bg-[#359381]"} active:text-white`} href={pathname.booked}>Booked</Link>
               <Link className={`${currentRouter !== pathname.home ? `${currentRouter === pathname.profile ? "text-white" : "text-gray-500"}` : "text-green-200"} py-1.5 px-4 rounded-full mx-2 font-medium hover:bg-[#359381] hover:text-white ${currentRouter === pathname.profile && "bg-[#359381]"} active:text-white`} href={pathname.profile}>Profile</Link>
             </>
           ) : (
