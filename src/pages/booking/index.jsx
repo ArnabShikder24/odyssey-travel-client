@@ -479,6 +479,25 @@ const Booking = () => {
                   </div>
                   <div className="md:col-span-2">
                     {/* ... payment method selection ... */}
+                    <div className="grid sm:grid-cols-4 gap-6 mt-6">
+                  <div className="col-span-2">
+                    <input
+                      type="number"
+                      placeholder="Card number"
+                      className="px-4 py-3.5 bg-white text-[#333] w-full text-sm border-2 rounded-md focus:border-blue-500 outline-none"
+                    />
+                  </div>
+                  <input
+                    type="number"
+                    placeholder="EXP."
+                    className="px-4 py-3.5 bg-white text-[#333] w-full text-sm border-2 rounded-md focus:border-blue-500 outline-none"
+                  />
+                  <input
+                    type="number"
+                    placeholder="CVV"
+                    className="px-4 py-3.5 bg-white text-[#333] w-full text-sm border-2 rounded-md focus:border-blue-500 outline-none"
+                  />
+                </div>
                   </div>
                 </div>
 
